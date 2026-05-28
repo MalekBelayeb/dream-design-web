@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogue — Dream Design</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="products.js"></script>
+  <style>
+    /* ── PAGE CATALOGUE SPECIFIC ─────────────────────── */
+    body { padding-top: var(--nav-h); }
+
+    /* HERO BANNER */
+    .cat-hero {
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+      background: var(--gray-100);
+      display: flex;
+      align-items: flex-end;
+    }
+    .cat-hero-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 8s ease;
+    }
+    .cat-hero:hover .cat-hero-bg { transform: scale(1.04); }
+    .cat-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,.72) 0%, rgba(0,0,0,.22) 100%);
+    }
+    .cat-hero-content {
+      position: relative; z-index: 2;
+      padding: 44px;
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .cat-hero-label {
+      font-family: var(--font-sans);
+      font-size: .6rem; letter-spacing: .26em; text-transform: uppercase;
+      color: rgba(255,255,255,.55); margin-bottom: 8px; font-weight: 500;
+    }
+    .cat-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 400; color: var(--white);
+      line-height: 1.1;
+    }
+    .cat-hero-desc {
+      font-family: var(--font-sans);
+      font-size: .82rem; font-weight: 300;
+      color: rgba(255,255,255,.6);
+      margin-top: 10px; max-width: 520px;
+    }
+
+    /* TOOLBAR */
+    .toolbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      position: sticky; top: var(--nav-h); z-index: 50;
+    }
+    .toolbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 14px 0;
+    }
+    .breadcrumb { padding: 0; }
+
+    /* FILTER BAR */
+    .filter-wrap {
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 16px 0;
+    }
+    .filter-inner {
+      display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap;
+    }
+    .filter-lbl {
+      font-family: var(--font-sans);
+      font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gray-500); margin-right: 6px; white-space: nowrap;
+      font-weight: 500;
+    }
+    .filter-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 18px;
+      font-family: var(--font-sans);
+      font-size: .73rem; font-weight: 400;
+      border: 1px solid var(--gray-200);
+      border-radius: 30px;
+      background: var(--white);
+      color: var(--gray-700);
+      cursor: pointer;
+      transition: var(--trans);
+      white-space: nowrap;
+    }
+    .filter-btn:hover { border-color: var(--dark); color: var(--black); }
+    .filter-btn.active {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+    .filter-btn .fcount {
+      display: inline-block;
+      font-size: .62rem;
+      background: var(--gray-100);
+      color: var(--gray-500);
+      padding: 1px 7px;
+      border-radius: 20px;
+      min-width: 20px;
+      text-align: center;
+    }
+    .filter-btn.active .fcount {
+      background: rgba(255,255,255,.18);
+      color: rgba(255,255,255,.8);
+    }
+
+    /* RESULTS COUNT */
+    #productCount {
+      font-family: var(--font-sans);
+      font-size: .76rem; font-weight: 300;
+      color: var(--gray-500);
+    }
+
+    /* PRODUCTS GRID */
+    .products-section { padding: 24px 0 90px; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* Sub-section title */
+    .subsec-title {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 16px;
+      padding: 22px 0 10px;
+      border-top: 1px solid var(--gray-200);
+      margin-top: 10px;
+    }
+    .subsec-title:first-child { border-top: none; margin-top: 0; padding-top: 6px; }
+    .subsec-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem; font-weight: 400;
+      color: var(--black);
+    }
+    .subsec-count {
+      font-family: var(--font-sans);
+      font-size: .7rem; color: var(--gray-400); font-weight: 300;
+      background: var(--gray-100);
+      padding: 3px 10px; border-radius: 20px;
+    }
+
+    /* Product card extended */
+    .prod-card { cursor: pointer; }
+    .prod-img  { aspect-ratio: 3/4; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,.52);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white);
+      border-radius: 6px;
+      max-width: 900px; width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,.22);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 10;
+      font-size: 1.2rem; color: var(--gray-500);
+      transition: var(--trans);
+    }
+    .modal-close:hover { background: var(--gray-100); color: var(--black); }
+    .modal-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .modal-img {
+      height: 480px;
+      background: var(--gray-100);
+      border-radius: 6px 0 0 6px;
+      overflow: hidden;
+    }
+    .modal-img img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-info { padding: 44px; display: flex; flex-direction: column; gap: 16px; }
+    .modal-cat {
+      font-family: var(--font-sans);
+      font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gray-500); font-weight: 500;
+    }
+    .modal-name {
+      font-family: var(--font-serif);
+      font-size: 1.85rem; font-weight: 400;
+      color: var(--black); line-height: 1.15;
+    }
+    .modal-price {
+      font-family: var(--font-sans);
+      font-size: 1.2rem; font-weight: 600; color: var(--black);
+    }
+    .modal-sep { height: 1px; background: var(--gray-200); }
+    .modal-section-title {
+      font-family: var(--font-sans);
+      font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 10px; font-weight: 500;
+    }
+    .modal-colors { display: flex; gap: 10px; flex-wrap: wrap; }
+    .modal-color {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      cursor: pointer;
+    }
+    .modal-color .swatch {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid var(--gray-300);
+      transition: var(--trans);
+    }
+    .modal-color .swatch:hover,
+    .modal-color.selected .swatch { border-color: var(--black); transform: scale(1.12); }
+    .modal-color .cn {
+      font-family: var(--font-sans);
+      font-size: .6rem; color: var(--gray-500); text-align: center; max-width: 54px; font-weight: 300;
+    }
+    .modal-dims { display: flex; gap: 22px; flex-wrap: wrap; }
+    .modal-dim { text-align: center; }
+    .modal-dim .val {
+      font-family: var(--font-sans);
+      font-size: .95rem; font-weight: 600; color: var(--black);
+    }
+    .modal-dim .key {
+      font-family: var(--font-sans);
+      font-size: .6rem; text-transform: uppercase; letter-spacing: .15em; color: var(--gray-400); margin-top: 3px; font-weight: 300;
+    }
+    .modal-ctas { display: flex; gap: 10px; margin-top: auto; }
+    .modal-wa {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: #25D366; color: #fff;
+      padding: 13px; border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      transition: background .25s;
+    }
+    .modal-wa:hover { background: #1EB359; }
+    .modal-wa svg { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .modal-enquire {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      background: var(--black); color: var(--white);
+      padding: 13px; border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      transition: background .25s;
+    }
+    .modal-enquire:hover { background: var(--gray-700); }
+
+    /* EMPTY STATE */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center; padding: 80px 0;
+      color: var(--gray-400);
+    }
+    .empty-state svg { opacity: .2; margin: 0 auto 16px; display: block; fill: none; stroke: var(--gray-400); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .empty-state p { font-family: var(--font-sans); font-size: .9rem; font-weight: 300; }
+
+    /* Responsive */
+    @media (max-width: 1100px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .modal-grid { grid-template-columns: 1fr; }
+      .modal-img { height: 280px; border-radius: 6px 6px 0 0; }
+      .cat-hero-content { padding: 28px 24px; }
+    }
+    @media (max-width: 600px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .toolbar-inner { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="../dream-design-logo.jpeg" alt="Dream Design"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="nav-logo-text" style="display:none">Dream Design</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li class="has-drop">
+          <a href="index.html#categories" class="active">Catégories ▾</a>
+          <div class="dropdown">
+            <a href="categorie.html?cat=meubles"><span class="cat-dot"></span> Meubles</a>
+            <a href="categorie.html?cat=ameublement"><span class="cat-dot"></span> Ameublement</a>
+            <a href="categorie.html?cat=siesta"><span class="cat-dot"></span> Super Siesta</a>
+            <a href="categorie.html?cat=pack-enfant"><span class="cat-dot"></span> Pack Enfant <span class="badge-enfant">Enfant</span></a>
+            <a href="categorie.html?cat=pack-mariage"><span class="cat-dot"></span> Pack Mariage <span class="badge-mariage">Nouveau</span></a>
+          </div>
+        </li>
+        <li><a href="index.html#architecture">Architecture</a></li>
+        <li><a href="index.html#architecture">Showroom</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">← Accueil</a>
+  <div class="mobile-nav-sub">
+    <a href="categorie.html?cat=meubles">Meubles</a>
+    <a href="categorie.html?cat=ameublement">Ameublement</a>
+    <a href="categorie.html?cat=siesta">Super Siesta</a>
+    <a href="categorie.html?cat=pack-enfant">Pack Enfant</a>
+    <a href="categorie.html?cat=pack-mariage">Pack Mariage</a>
+  </div>
+  <a href="index.html#architecture">Architecture</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<!-- ══════════════════ FLOATING SOCIAL ══════════════════ -->
+<div class="float-social">
+  <a href="https://wa.me/216XXXXXXXX" class="fs-wa" title="WhatsApp" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+  <a href="#" class="fs-ig" title="Instagram" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <a href="#" class="fs-fb" title="Facebook" target="_blank">
+    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  </a>
+</div>
+
+<!-- ══════════════════ DYNAMIC HERO (filled by JS) ══════════════════ -->
+<div class="cat-hero" id="catHero">
+  <div class="cat-hero-bg" id="heroBg"></div>
+  <div class="cat-hero-overlay"></div>
+  <div class="cat-hero-content">
+    <div class="cat-hero-label" id="heroLabel">Catégorie · Dream Design</div>
+    <h1 class="cat-hero-title" id="heroTitle">Chargement…</h1>
+    <p class="cat-hero-desc" id="heroDesc"></p>
+  </div>
+</div>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="container">
+    <div class="toolbar-inner">
+      <nav class="breadcrumb" id="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span class="sep">/</span>
+        <span class="current" id="bcCurrent">…</span>
+      </nav>
+      <span id="productCount"></span>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-wrap">
+  <div class="container">
+    <div class="filter-inner" id="filterBar">
+      <span class="filter-lbl">Filtrer :</span>
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-section">
+  <div class="container">
+    <div class="products-grid" id="productsGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ PRODUCT MODAL ══════════════════ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalCloseBtn">✕</button>
+    <div class="modal-grid">
+      <div class="modal-img">
+        <img id="mImg" src="" alt="" />
+      </div>
+      <div class="modal-info">
+        <div class="modal-cat" id="mCat"></div>
+        <div class="modal-name" id="mName"></div>
+        <div class="modal-price" id="mPrice"></div>
+        <div class="modal-sep"></div>
+        <div>
+          <div class="modal-section-title">Coloris disponibles</div>
+          <div class="modal-colors" id="mColors"></div>
+        </div>
+        <div>
+          <div class="modal-section-title">Dimensions</div>
+          <div class="modal-dims" id="mDims"></div>
+        </div>
+        <div class="modal-sep"></div>
+        <div class="modal-ctas">
+          <a id="modalWaLink" href="https://wa.me/216XXXXXXXX" class="modal-wa" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            WhatsApp
+          </a>
+          <a href="index.html#contact" class="modal-enquire">Demander un devis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+
+  <div class="footer-body">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img src="../dream-design-logo.jpeg" alt="Dream Design"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="brand-name" style="display:none">Dream Design</span>
+          </div>
+          <p>Architecture, design d'intérieur et meubles sur mesure — showroom à Cité Ennasr, Tunis.</p>
+          <div class="footer-social">
+            <a href="#" title="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" title="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://wa.me/216XXXXXXXX" title="WhatsApp" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Catégories</h4>
+          <ul>
+            <li><a href="categorie.html?cat=meubles">Meubles</a></li>
+            <li><a href="categorie.html?cat=ameublement">Ameublement</a></li>
+            <li><a href="categorie.html?cat=siesta">Super Siesta</a></li>
+            <li><a href="categorie.html?cat=pack-enfant">Pack Enfant</a></li>
+            <li><a href="categorie.html?cat=pack-mariage">Pack Mariage</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">Cité Ennasr, Ariana, Tunisie</a></li>
+            <li><a href="tel:+216XXXXXXXX">+216 XX XXX XXX</a></li>
+            <li><a href="mailto:contact@dreamdesign.tn">contact@dreamdesign.tn</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Horaires</h4>
+          <ul>
+            <li><a href="#">Lun – Sam : 9h – 18h30</a></li>
+            <li><a href="#">Dimanche : sur RDV</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Dream Design — Rawya Habbesi. Tous droits réservés.</p>
+        <p>Cité Ennasr, Ariana — Tunis, Tunisie</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Haut de page">
+  <svg width="16" height="16" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</div>
+
+<!-- ══════════════════ SCRIPTS ══════════════════ -->
+<script>
+/* ── UTILS ────────────────────────────────── */
+const qs  = s => document.querySelector(s);
+const qsa = s => document.querySelectorAll(s);
+
+/* ── NAV / BURGER ─────────────────────────── */
+window.addEventListener('scroll', () => {
+  qs('#navbar').classList.toggle('shadowed', scrollY > 30);
+  qs('#btt').classList.toggle('show', scrollY > 400);
+});
+qs('#burger').addEventListener('click', () => {
+  qs('#burger').classList.toggle('open');
+  qs('#mobileNav').classList.toggle('open');
+});
+
+/* ── PARSE URL PARAMS ─────────────────────── */
+const params  = new URLSearchParams(location.search);
+const CAT_KEY = params.get('cat') || 'meubles';
+const SUB_KEY = params.get('sub') || null;
+
+const catData = CATALOG[CAT_KEY];
+
+/* ── INIT HERO ────────────────────────────── */
+(function initHero() {
+  if (!catData) { document.title = 'Catalogue — Dream Design'; return; }
+  document.title = catData.label + ' — Dream Design';
+  qs('#heroBg').style.backgroundImage = `url('${catData.cover}')`;
+  qs('#heroTitle').textContent = catData.label;
+  qs('#heroDesc').textContent  = catData.description || '';
+  qs('#bcCurrent').textContent = catData.label;
+})();
+
+/* ── FILTERS ──────────────────────────────── */
+let activeSub = SUB_KEY;
+
+function buildFilters() {
+  const bar = qs('#filterBar');
+  const lbl = bar.querySelector('.filter-lbl');
+  bar.innerHTML = '';
+  bar.appendChild(lbl);
+  if (!catData) return;
+
+  bar.appendChild(makeFilterBtn('Tout voir', null, getAllProducts().length));
+  Object.keys(catData.sub).forEach(key => {
+    bar.appendChild(makeFilterBtn(catData.sub[key].label, key, catData.sub[key].products.length));
+  });
+  updateActive();
+}
+
+function makeFilterBtn(label, key, count) {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn';
+  btn.dataset.sub = key || '';
+  btn.innerHTML = `${label} <span class="fcount">${count}</span>`;
+  btn.addEventListener('click', () => {
+    activeSub = key;
+    updateActive();
+    renderProducts();
+    const url = new URL(location.href);
+    key ? url.searchParams.set('sub', key) : url.searchParams.delete('sub');
+    history.replaceState(null, '', url);
+  });
+  return btn;
+}
+
+function updateActive() {
+  qsa('.filter-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.sub === (activeSub || ''));
+  });
+}
+
+/* ── PRODUCT HELPERS ──────────────────────── */
+function getAllProducts() {
+  if (!catData) return [];
+  return Object.entries(catData.sub).flatMap(([k, sub]) =>
+    sub.products.map(p => ({ ...p, subKey: k, subLabel: sub.label }))
+  );
+}
+
+function getFilteredProducts() {
+  if (!catData) return [];
+  if (!activeSub) return getAllProducts();
+  const sub = catData.sub[activeSub];
+  if (!sub) return [];
+  return sub.products.map(p => ({ ...p, subKey: activeSub, subLabel: sub.label }));
+}
+
+/* ── RENDER PRODUCTS ──────────────────────── */
+function renderProducts() {
+  const grid = qs('#productsGrid');
+  grid.innerHTML = '';
+
+  const prods = getFilteredProducts();
+  qs('#productCount').textContent = `${prods.length} produit${prods.length > 1 ? 's' : ''}`;
+
+  if (!prods.length) {
+    grid.innerHTML = `<div class="empty-state">
+      <svg width="48" height="48" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <p>Aucun produit dans cette catégorie pour le moment.</p>
+    </div>`;
+    return;
+  }
+
+  if (!activeSub) {
+    // Show all, grouped by sub-category
+    Object.entries(catData.sub).forEach(([key, sub]) => {
+      if (!sub.products.length) return;
+
+      const titleEl = document.createElement('div');
+      titleEl.className = 'subsec-title';
+      titleEl.innerHTML = `
+        <span class="subsec-name">${sub.label}</span>
+        <span class="subsec-count">${sub.products.length} article${sub.products.length > 1 ? 's' : ''}</span>`;
+      grid.appendChild(titleEl);
+
+      sub.products.forEach(p => {
+        grid.appendChild(buildCard({ ...p, subKey: key, subLabel: sub.label }));
+      });
+    });
+  } else {
+    prods.forEach(p => grid.appendChild(buildCard(p)));
+  }
+
+  setTimeout(observeCards, 50);
+}
+
+function buildCard(p) {
+  const div = document.createElement('div');
+  div.className = 'prod-card reveal';
+  div.innerHTML = `
+    <div class="prod-img">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" />
+    </div>
+    <div class="prod-info">
+      <div class="prod-cat">${p.subLabel}</div>
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-colors">
+        ${p.colors.map((c, i) =>
+          `<span class="swatch" style="background:${c}" title="${p.colorNames?.[i] || c}"></span>`
+        ).join('')}
+      </div>
+      <div class="prod-dims">
+        ${p.width  && p.width  !== '—' ? `<span>L ${p.width}</span>`  : ''}
+        ${p.depth  && p.depth  !== '—' ? `<span>P ${p.depth}</span>`  : ''}
+        ${p.height && p.height !== '—' ? `<span>H ${p.height}</span>` : ''}
+      </div>
+      <div class="prod-price">${p.price}</div>
+      <div class="prod-actions">
+        <button class="prod-btn primary" onclick="openModal(event,'${p.id}')">Voir détails</button>
+        <a href="https://wa.me/216XXXXXXXX?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20%3A%20${encodeURIComponent(p.name)}"
+           target="_blank" class="prod-btn secondary">WhatsApp</a>
+      </div>
+    </div>`;
+  return div;
+}
+
+/* ── MODAL ────────────────────────────────── */
+function openModal(e, id) {
+  e.stopPropagation();
+  const p = getAllProducts().find(x => x.id === id);
+  if (!p) return;
+
+  qs('#mImg').src   = p.img;
+  qs('#mImg').alt   = p.name;
+  qs('#mCat').textContent   = p.subLabel;
+  qs('#mName').textContent  = p.name;
+  qs('#mPrice').textContent = p.price;
+
+  qs('#mColors').innerHTML = p.colors.map((c, i) => `
+    <div class="modal-color" title="${p.colorNames?.[i] || c}">
+      <span class="swatch" style="background:${c}"></span>
+      <span class="cn">${p.colorNames?.[i] || ''}</span>
+    </div>`).join('');
+
+  const dims = [];
+  if (p.width  && p.width  !== '—') dims.push({ key:'Largeur',    val: p.width  });
+  if (p.depth  && p.depth  !== '—') dims.push({ key:'Profondeur', val: p.depth  });
+  if (p.height && p.height !== '—') dims.push({ key:'Hauteur',    val: p.height });
+  qs('#mDims').innerHTML = dims.map(d =>
+    `<div class="modal-dim"><div class="val">${d.val}</div><div class="key">${d.key}</div></div>`
+  ).join('');
+
+  // Update WhatsApp link with product name
+  qs('#modalWaLink').href = `https://wa.me/216XXXXXXXX?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20%3A%20${encodeURIComponent(p.name)}`;
+
+  qs('#modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  qs('#modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on overlay click
+qs('#modalOverlay').addEventListener('click', e => {
+  if (e.target === qs('#modalOverlay')) closeModal();
+});
+// Close button
+qs('#modalCloseBtn').addEventListener('click', closeModal);
+// Escape key
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ── SCROLL REVEAL ────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); io.unobserve(e.target); } });
+}, { threshold: 0.08 });
+
+function observeCards() {
+  qsa('.prod-card.reveal:not(.up)').forEach(c => io.observe(c));
+}
+
+/* ── INIT ─────────────────────────────────── */
+buildFilters();
+renderProducts();
+</script>
+</body>
+</html>
