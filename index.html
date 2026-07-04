@@ -1,753 +1,2096 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dream Design — Architecture & Ameublement | Rawya Habbesi</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ══════════════════════════════════════════════════
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Design — Architecture & Ameublement | Rawya Habbesi</title>
+
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Dream Design by Rawya Habbesi — Studio d'architecture et de décoration intérieure en Tunisie. Mobilier sur mesure, aménagement d'espaces et design d'intérieur haut de gamme."
+    />
+    <meta
+      name="keywords"
+      content="dream design, architecture tunisie, décoration intérieure, mobilier sur mesure, rawya habbesi, meubles tunisie, aménagement intérieur"
+    />
+    <meta name="author" content="Rawya Habbesi — Dream Design" />
+    <link rel="canonical" href="https://dream-design.tn/" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="assets/logo/dream-design-logo.png"
+    />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dream-design.tn/" />
+    <meta
+      property="og:title"
+      content="Dream Design — Architecture & Ameublement | Rawya Habbesi"
+    />
+    <meta
+      property="og:description"
+      content="Studio d'architecture et de décoration intérieure en Tunisie. Mobilier sur mesure et design d'intérieur haut de gamme."
+    />
+    <meta property="og:image" content="assets/og-cover.jpg" />
+    <meta property="og:locale" content="fr_TN" />
+    <meta property="og:site_name" content="Dream Design" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Dream Design — Architecture & Ameublement | Rawya Habbesi"
+    />
+    <meta
+      name="twitter:description"
+      content="Studio d'architecture et de décoration intérieure en Tunisie. Mobilier sur mesure et design d'intérieur haut de gamme."
+    />
+    <meta name="twitter:image" content="assets/og-cover.jpg" />
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ══════════════════════════════════════════════════
        PAGE ACCUEIL — STYLES SPÉCIFIQUES
        Police : DM Serif Display + Raleway (via style.css)
     ══════════════════════════════════════════════════ */
 
-    /* ─── HERO CAROUSEL ──────────────────────────────── */
-    #hero {
-      position:relative; height:100vh; min-height:620px;
-      overflow:hidden; margin-top:var(--nav-h);
-    }
-    .slides { position:absolute; inset:0; }
-    .slide  { position:absolute; inset:0; opacity:0; transition:opacity 1s ease; }
-    .slide.active { opacity:1; }
-    .slide-bg {
-      position:absolute; inset:0;
-      background-size:cover; background-position:center;
-      transform:scale(1.05); transition:transform 8s ease;
-    }
-    .slide.active .slide-bg { transform:scale(1); }
-    .slide-overlay {
-      position:absolute; inset:0;
-      background:linear-gradient(to right, rgba(5,5,5,.70) 0%, rgba(5,5,5,.22) 60%, rgba(5,5,5,.08) 100%);
-    }
-    .hero-content {
-      position:absolute; inset:0;
-      display:flex; flex-direction:column; justify-content:center;
-      padding:0 max(40px, calc((100% - var(--max-w))/2 + 40px));
-      padding-right:50%; z-index:2;
-    }
-    .hero-tag {
-      display:inline-flex; align-items:center; gap:10px;
-      font-size:.6rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
-      color:rgba(255,255,255,.6); margin-bottom:22px;
-    }
-    .hero-tag::before { content:''; display:block; width:36px; height:1px; background:rgba(255,255,255,.4); }
-    .hero-title {
-      font-family:var(--font-serif);
-      font-size:clamp(2.8rem, 5.5vw, 5.2rem);
-      font-weight:400; line-height:1.12; color:var(--white);
-      margin-bottom:22px; letter-spacing:-.02em;
-    }
-    .hero-title em { font-style:italic; color:rgba(255,255,255,.72); }
-    .hero-desc {
-      font-size:.85rem; font-weight:300; line-height:1.85;
-      color:rgba(255,255,255,.62); max-width:400px; margin-bottom:40px;
-    }
-    .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
-    .btn-white {
-      display:inline-flex; align-items:center; gap:8px;
-      background:var(--white); color:var(--black);
-      font-size:.68rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-      padding:14px 30px; border-radius:var(--radius); transition:background .25s, transform .2s;
-    }
-    .btn-white:hover { background:var(--gray-100); transform:translateY(-2px); }
-    .btn-outline-w {
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid rgba(255,255,255,.4); color:var(--white);
-      font-size:.68rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
-      padding:14px 30px; border-radius:var(--radius); transition:background .25s, border-color .25s;
-    }
-    .btn-outline-w:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.75); }
+      /* ─── HERO CAROUSEL ──────────────────────────────── */
+      #hero {
+        position: relative;
+        height: 100vh;
+        min-height: 620px;
+        overflow: hidden;
+        margin-top: var(--nav-h);
+      }
+      .slides {
+        position: absolute;
+        inset: 0;
+      }
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+      .slide.active {
+        opacity: 1;
+      }
+      .slide-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        transform: scale(1.05);
+        transition: transform 8s ease;
+      }
+      .slide.active .slide-bg {
+        transform: scale(1);
+      }
+      .slide-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to right,
+          rgba(5, 5, 5, 0.7) 0%,
+          rgba(5, 5, 5, 0.22) 60%,
+          rgba(5, 5, 5, 0.08) 100%
+        );
+      }
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 max(40px, calc((100% - var(--max-w)) / 2 + 40px));
+        padding-right: 50%;
+        z-index: 2;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 22px;
+      }
+      .hero-tag::before {
+        content: "";
+        display: block;
+        width: 36px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.4);
+      }
+      .hero-title {
+        font-family: var(--font-serif);
+        font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+        font-weight: 400;
+        line-height: 1.12;
+        color: var(--white);
+        margin-bottom: 22px;
+        letter-spacing: -0.02em;
+      }
+      .hero-title em {
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .hero-desc {
+        font-size: 0.85rem;
+        font-weight: 300;
+        line-height: 1.85;
+        color: rgba(255, 255, 255, 0.62);
+        max-width: 400px;
+        margin-bottom: 40px;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        color: var(--black);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 14px 30px;
+        border-radius: var(--radius);
+        transition:
+          background 0.25s,
+          transform 0.2s;
+      }
+      .btn-white:hover {
+        background: var(--gray-100);
+        transform: translateY(-2px);
+      }
+      .btn-outline-w {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: var(--white);
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 14px 30px;
+        border-radius: var(--radius);
+        transition:
+          background 0.25s,
+          border-color 0.25s;
+      }
+      .btn-outline-w:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.75);
+      }
 
-    /* Dots */
-    .c-dots {
-      position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
-      z-index:3; display:flex; gap:8px;
-    }
-    .c-dot {
-      width:26px; height:3px; border-radius:2px;
-      background:rgba(255,255,255,.28); cursor:pointer; transition:all .3s;
-    }
-    .c-dot.active { width:50px; background:var(--white); }
+      /* Dots */
+      .c-dots {
+        position: absolute;
+        bottom: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        display: flex;
+        gap: 8px;
+      }
+      .c-dot {
+        width: 26px;
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.28);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .c-dot.active {
+        width: 50px;
+        background: var(--white);
+      }
 
-    .c-arrow {
-      position:absolute; top:50%; z-index:3; transform:translateY(-50%);
-      width:44px; height:44px; border-radius:50%;
-      background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.28);
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; backdrop-filter:blur(6px); transition:background .25s;
-    }
-    .c-arrow:hover { background:rgba(255,255,255,.26); }
-    .c-arrow svg { fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-    .c-prev { left:28px; } .c-next { right:28px; }
+      .c-arrow {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.13);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        transition: background 0.25s;
+      }
+      .c-arrow:hover {
+        background: rgba(255, 255, 255, 0.26);
+      }
+      .c-arrow svg {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .c-prev {
+        left: 28px;
+      }
+      .c-next {
+        right: 28px;
+      }
 
-    /* ─── STRIP ──────────────────────────────────────── */
-    .strip { background:var(--black); padding:15px 0; overflow:hidden; }
-    .strip-track { display:flex; gap:48px; animation:marquee 24s linear infinite; white-space:nowrap; }
-    .strip-item { display:inline-flex; align-items:center; gap:12px; font-size:.6rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.38); flex-shrink:0; }
-    .strip-item .dot { width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,.28); }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+      /* ─── STRIP ──────────────────────────────────────── */
+      .strip {
+        background: var(--black);
+        padding: 15px 0;
+        overflow: hidden;
+      }
+      .strip-track {
+        display: flex;
+        gap: 48px;
+        animation: marquee 24s linear infinite;
+        white-space: nowrap;
+      }
+      .strip-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.6rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.38);
+        flex-shrink: 0;
+      }
+      .strip-item .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.28);
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
 
-    /* ─── CATEGORIES ─────────────────────────────────── */
-    #categories { background:var(--bg); padding:90px 0; }
-    .cat-layout { display:grid; grid-template-columns:270px 1fr; gap:56px; align-items:start; }
+      /* ─── CATEGORIES ─────────────────────────────────── */
+      #categories {
+        background: var(--bg);
+        padding: 90px 0;
+      }
+      .cat-layout {
+        display: grid;
+        grid-template-columns: 270px 1fr;
+        gap: 56px;
+        align-items: start;
+      }
 
-    /* Accordion left */
-    .cat-nav { position:sticky; top:calc(var(--nav-h) + 20px); }
-    .cat-nav-hd { font-size:.58rem; font-weight:600; letter-spacing:.25em; text-transform:uppercase; color:var(--gray-400); margin-bottom:18px; }
+      /* Accordion left */
+      .cat-nav {
+        position: sticky;
+        top: calc(var(--nav-h) + 20px);
+      }
+      .cat-nav-hd {
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-bottom: 18px;
+      }
 
-    .cat-group { border-bottom:1px solid var(--gray-200); }
-    .cg-header {
-      display:flex; align-items:center; justify-content:space-between;
-      padding:15px 0; cursor:pointer;
-    }
-    .cg-header:hover .cg-name { color:var(--black); }
-    .cg-name { font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--gray-700); transition:color .2s; }
-    .cg-header.open .cg-name { color:var(--black); }
-    .cg-badge { font-size:.55rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; padding:2px 8px; border-radius:10px; }
-    .cg-badge.mariage { background:#fce8f3; color:#b84c7d; }
-    .cg-badge.enfant  { background:#e3f2fd; color:#1565c0; }
-    .cg-chevron { fill:none; stroke:var(--gray-400); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .25s; }
-    .cg-header.open .cg-chevron { transform:rotate(180deg); stroke:var(--black); }
+      .cat-group {
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .cg-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 0;
+        cursor: pointer;
+      }
+      .cg-header:hover .cg-name {
+        color: var(--black);
+      }
+      .cg-name {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gray-700);
+        transition: color 0.2s;
+      }
+      .cg-header.open .cg-name {
+        color: var(--black);
+      }
+      .cg-badge {
+        font-size: 0.55rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 2px 8px;
+        border-radius: 10px;
+      }
+      .cg-badge.mariage {
+        background: #fce8f3;
+        color: #b84c7d;
+      }
+      .cg-badge.enfant {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+      .cg-chevron {
+        fill: none;
+        stroke: var(--gray-400);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.25s;
+      }
+      .cg-header.open .cg-chevron {
+        transform: rotate(180deg);
+        stroke: var(--black);
+      }
 
-    .cat-subs { max-height:0; overflow:hidden; transition:max-height .35s ease, padding .25s; }
-    .cat-subs.open { max-height:700px; padding-bottom:12px; }
-    .csl {
-      display:flex; align-items:center; gap:8px; padding:7px 8px;
-      font-size:.76rem; font-weight:300; color:var(--gray-500);
-      border-radius:var(--radius); transition:var(--trans); text-decoration:none;
-    }
-    .csl::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--gray-300); flex-shrink:0; transition:background .2s; }
-    .csl:hover { background:var(--gray-100); color:var(--black); }
-    .csl:hover::before { background:var(--black); }
-    .csl-main {
-      display:block; margin-top:6px; padding:9px 8px;
-      font-size:.66rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--white); background:var(--black); border-radius:var(--radius);
-      text-align:center; transition:background .25s;
-    }
-    .csl-main:hover { background:var(--gray-700); }
+      .cat-subs {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.25s;
+      }
+      .cat-subs.open {
+        max-height: 700px;
+        padding-bottom: 12px;
+      }
+      .csl {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 8px;
+        font-size: 0.76rem;
+        font-weight: 300;
+        color: var(--gray-500);
+        border-radius: var(--radius);
+        transition: var(--trans);
+        text-decoration: none;
+      }
+      .csl::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--gray-300);
+        flex-shrink: 0;
+        transition: background 0.2s;
+      }
+      .csl:hover {
+        background: var(--gray-100);
+        color: var(--black);
+      }
+      .csl:hover::before {
+        background: var(--black);
+      }
+      .csl-main {
+        display: block;
+        margin-top: 6px;
+        padding: 9px 8px;
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--white);
+        background: var(--black);
+        border-radius: var(--radius);
+        text-align: center;
+        transition: background 0.25s;
+      }
+      .csl-main:hover {
+        background: var(--gray-700);
+      }
 
-    /* Grid right — 5 catégories : 3 en haut + 2 en bas centrées */
-    .cat-grid {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:16px;
-    }
-    /* Les 2 dernières cartes (Pack Mariage + Super Siesta) → 2 colonnes centré */
-    .cat-grid .span-center {
-      grid-column:span 1;
-    }
-    .cat-grid-row2 {
-      grid-column:1/-1;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:16px;
-      max-width:calc(66.6% + 8px);
-      margin:0 auto;
-      width:100%;
-    }
+      /* Grid right — 5 catégories : 3 en haut + 2 en bas centrées */
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .cat-grid .span-center {
+        grid-column: span 1;
+      }
+      .cat-grid-row2 {
+        grid-column: 1/-1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
 
-    .cat-card {
-      position:relative; border-radius:var(--radius); overflow:hidden;
-      background:var(--gray-100); aspect-ratio:3/4; cursor:pointer; display:block;
-    }
-    .cat-card.wide { aspect-ratio:16/9; }
-    .cat-card img { transition:transform .55s ease; }
-    .cat-card:hover img { transform:scale(1.07); }
-    .cat-ov {
-      position:absolute; inset:0;
-      background:linear-gradient(to top, rgba(0,0,0,.68) 0%, transparent 58%);
-      display:flex; flex-direction:column; justify-content:flex-end; padding:22px;
-    }
-    .cat-ov-lbl { font-size:.58rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:5px; }
-    .cat-ov-name { font-family:var(--font-serif); font-size:1.4rem; color:var(--white); line-height:1.1; }
-    .cat-ov-sub  { font-size:.68rem; font-weight:300; color:rgba(255,255,255,.5); margin-top:3px; }
+      .cat-card {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--gray-100);
+        aspect-ratio: 3/4;
+        cursor: pointer;
+        display: block;
+      }
+      .cat-card.wide {
+        aspect-ratio: 16/9;
+      }
+      .cat-card img {
+        transition: transform 0.55s ease;
+      }
+      .cat-card:hover img {
+        transform: scale(1.07);
+      }
+      .cat-ov {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.68) 0%,
+          transparent 58%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 22px;
+      }
+      .cat-ov-lbl {
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 5px;
+      }
+      .cat-ov-name {
+        font-family: var(--font-serif);
+        font-size: 1.4rem;
+        color: var(--white);
+        line-height: 1.1;
+      }
+      .cat-ov-sub {
+        font-size: 0.68rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 3px;
+      }
 
-    /* Badge spécial sur la carte */
-    .cat-card-badge {
-      position:absolute; top:14px; left:14px;
-      font-size:.58rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
-      padding:4px 10px; border-radius:14px;
-    }
-    .cat-card-badge.mariage { background:#fce8f3; color:#b84c7d; }
-    .cat-card-badge.enfant  { background:#e3f2fd; color:#1565c0; }
-    .cat-card-badge.new     { background:var(--black); color:var(--white); }
+      /* Badge spécial sur la carte */
+      .cat-card-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        font-size: 0.58rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 14px;
+      }
+      .cat-card-badge.mariage {
+        background: #fce8f3;
+        color: #b84c7d;
+      }
+      .cat-card-badge.enfant {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+      .cat-card-badge.new {
+        background: var(--black);
+        color: var(--white);
+      }
 
-    .cat-card-arrow {
-      position:absolute; top:14px; right:14px;
-      width:32px; height:32px; border-radius:50%;
-      background:rgba(255,255,255,.15); backdrop-filter:blur(4px);
-      border:1px solid rgba(255,255,255,.22);
-      display:flex; align-items:center; justify-content:center;
-      opacity:0; transform:translateY(4px); transition:opacity .3s, transform .3s;
-    }
-    .cat-card-arrow svg { fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-    .cat-card:hover .cat-card-arrow { opacity:1; transform:translateY(0); }
+      .cat-card-arrow {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(4px);
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+      }
+      .cat-card-arrow svg {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .cat-card:hover .cat-card-arrow {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-    /* ─── ARCHITECTURE ────────────────────────────────── */
-    #architecture { background:var(--white); padding:90px 0; }
-    .arch-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-    .arch-img-wrap { position:relative; }
-    .arch-img-main { height:570px; border-radius:var(--radius); overflow:hidden; background:var(--gray-100); }
-    .arch-img-accent { position:absolute; bottom:-24px; right:-24px; width:195px; height:195px; border-radius:var(--radius); overflow:hidden; border:6px solid var(--white); box-shadow:0 16px 48px rgba(0,0,0,.12); }
-    .arch-badge { position:absolute; top:28px; left:-18px; background:var(--black); color:var(--white); padding:16px 22px; border-radius:var(--radius); text-align:center; }
-    .arch-badge .num { font-family:var(--font-serif); font-size:2rem; line-height:1; }
-    .arch-badge .lbl { font-size:.56rem; font-weight:500; letter-spacing:.15em; text-transform:uppercase; color:var(--gray-400); margin-top:4px; }
-    .arch-content h2 { margin-bottom:22px; }
-    .arch-content p { font-size:.86rem; font-weight:300; line-height:1.9; color:var(--gray-500); margin-bottom:16px; }
-    .arch-content strong { color:var(--dark); font-weight:600; }
-    .arch-feats { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px; }
-    .arch-feat { padding:16px 18px; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius); }
-    .arch-feat .fi { width:34px; height:34px; background:var(--black); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; margin-bottom:10px; }
-    .arch-feat .fi svg { fill:none; stroke:#fff; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    .arch-feat h4 { font-size:.78rem; font-weight:600; color:var(--black); margin-bottom:3px; }
-    .arch-feat p  { font-size:.72rem; font-weight:300; color:var(--gray-500); line-height:1.5; margin:0; }
-    .arch-cta { display:inline-flex; align-items:center; gap:10px; margin-top:32px; background:var(--black); color:var(--white); font-size:.7rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; padding:13px 26px; border-radius:var(--radius); transition:background .25s; }
-    .arch-cta:hover { background:var(--gray-700); }
-    .arch-cta svg { fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+      /* ─── ARCHITECTURE ────────────────────────────────── */
+      #architecture {
+        background: var(--white);
+        padding: 90px 0;
+      }
+      .arch-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .arch-img-wrap {
+        position: relative;
+      }
+      .arch-img-main {
+        height: 570px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--gray-100);
+      }
+      .arch-img-accent {
+        position: absolute;
+        bottom: -24px;
+        right: -24px;
+        width: 195px;
+        height: 195px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 6px solid var(--white);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+      }
+      .arch-badge {
+        position: absolute;
+        top: 28px;
+        left: -18px;
+        background: var(--black);
+        color: var(--white);
+        padding: 16px 22px;
+        border-radius: var(--radius);
+        text-align: center;
+      }
+      .arch-badge .num {
+        font-family: var(--font-serif);
+        font-size: 2rem;
+        line-height: 1;
+      }
+      .arch-badge .lbl {
+        font-size: 0.56rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-top: 4px;
+      }
+      .arch-content h2 {
+        margin-bottom: 22px;
+      }
+      .arch-content p {
+        font-size: 0.86rem;
+        font-weight: 300;
+        line-height: 1.9;
+        color: var(--gray-500);
+        margin-bottom: 16px;
+      }
+      .arch-content strong {
+        color: var(--dark);
+        font-weight: 600;
+      }
+      .arch-feats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 32px;
+      }
+      .arch-feat {
+        padding: 16px 18px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius);
+      }
+      .arch-feat .fi {
+        width: 34px;
+        height: 34px;
+        background: var(--black);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .arch-feat .fi svg {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .arch-feat h4 {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 3px;
+      }
+      .arch-feat p {
+        font-size: 0.72rem;
+        font-weight: 300;
+        color: var(--gray-500);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .arch-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 32px;
+        background: var(--black);
+        color: var(--white);
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 13px 26px;
+        border-radius: var(--radius);
+        transition: background 0.25s;
+      }
+      .arch-cta:hover {
+        background: var(--gray-700);
+      }
+      .arch-cta svg {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
 
-    /* ─── CONTACT ─────────────────────────────────────── */
-    #contact { background:var(--gray-50); padding:90px 0; }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-    .contact-left > p { font-size:.86rem; font-weight:300; line-height:1.85; color:var(--gray-500); margin-bottom:32px; }
-    .cinfo { display:flex; align-items:flex-start; gap:14px; margin-bottom:16px; }
-    .cinfo-icon { width:38px; height:38px; border-radius:50%; border:1px solid var(--gray-200); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .cinfo-icon svg { fill:none; stroke:var(--dark); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
-    .cinfo-lbl { font-size:.58rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--gray-400); margin-bottom:2px; }
-    .cinfo-val { font-size:.84rem; font-weight:300; color:var(--dark); line-height:1.55; }
-    .c-socials { display:flex; gap:10px; margin-top:24px; }
-    .cs-btn { width:40px; height:40px; border-radius:50%; border:1px solid var(--gray-200); display:flex; align-items:center; justify-content:center; transition:var(--trans); }
-    .cs-btn:hover { border-color:var(--black); background:var(--gray-100); }
-    .cs-btn svg { fill:none; stroke:var(--gray-500); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    .cs-btn:hover svg { stroke:var(--black); }
+      /* ─── CONTACT ─────────────────────────────────────── */
+      #contact {
+        background: var(--gray-50);
+        padding: 90px 0;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .contact-left > p {
+        font-size: 0.86rem;
+        font-weight: 300;
+        line-height: 1.85;
+        color: var(--gray-500);
+        margin-bottom: 32px;
+      }
+      .cinfo {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+      .cinfo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--gray-200);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .cinfo-icon svg {
+        fill: none;
+        stroke: var(--dark);
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .cinfo-lbl {
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-bottom: 2px;
+      }
+      .cinfo-val {
+        font-size: 0.84rem;
+        font-weight: 300;
+        color: var(--dark);
+        line-height: 1.55;
+      }
+      .c-socials {
+        display: flex;
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .cs-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--gray-200);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--trans);
+      }
+      .cs-btn:hover {
+        border-color: var(--black);
+        background: var(--gray-100);
+      }
+      .cs-btn svg {
+        fill: none;
+        stroke: var(--gray-500);
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .cs-btn:hover svg {
+        stroke: var(--black);
+      }
 
-    .contact-form { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius); padding:38px; }
-    .form-ttl { font-family:var(--font-serif); font-size:1.55rem; color:var(--black); margin-bottom:26px; }
-    .f-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
-    .f-group { margin-bottom:12px; }
-    .f-group label { display:block; font-size:.58rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--gray-500); margin-bottom:6px; }
-    .f-group input, .f-group textarea, .f-group select { width:100%; background:var(--gray-50); border:1px solid var(--gray-200); border-radius:var(--radius); padding:11px 15px; font-family:var(--font-sans); font-size:.84rem; font-weight:300; color:var(--dark); outline:none; transition:border-color .25s, background .25s; }
-    .f-group input:focus, .f-group textarea:focus, .f-group select:focus { border-color:var(--black); background:var(--white); }
-    .f-group textarea { resize:vertical; min-height:115px; }
-    .f-submit { width:100%; background:var(--black); color:var(--white); border:none; padding:13px; font-family:var(--font-sans); font-size:.7rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; border-radius:var(--radius); cursor:pointer; transition:background .25s, transform .2s; margin-top:4px; }
-    .f-submit:hover { background:var(--gray-700); transform:translateY(-1px); }
-    .f-note { font-size:.66rem; font-weight:300; color:var(--gray-400); text-align:center; margin-top:10px; }
+      .contact-form {
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius);
+        padding: 38px;
+      }
+      .form-ttl {
+        font-family: var(--font-serif);
+        font-size: 1.55rem;
+        color: var(--black);
+        margin-bottom: 26px;
+      }
+      .f-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .f-group {
+        margin-bottom: 12px;
+      }
+      .f-group label {
+        display: block;
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gray-500);
+        margin-bottom: 6px;
+      }
+      .f-group input,
+      .f-group textarea,
+      .f-group select {
+        width: 100%;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius);
+        padding: 11px 15px;
+        font-family: var(--font-sans);
+        font-size: 0.84rem;
+        font-weight: 300;
+        color: var(--dark);
+        outline: none;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+      }
+      .f-group input:focus,
+      .f-group textarea:focus,
+      .f-group select:focus {
+        border-color: var(--black);
+        background: var(--white);
+      }
+      .f-group textarea {
+        resize: vertical;
+        min-height: 115px;
+      }
+      .f-submit {
+        width: 100%;
+        background: var(--black);
+        color: var(--white);
+        border: none;
+        padding: 13px;
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition:
+          background 0.25s,
+          transform 0.2s;
+        margin-top: 4px;
+      }
+      .f-submit:hover {
+        background: var(--gray-700);
+        transform: translateY(-1px);
+      }
+      .f-note {
+        font-size: 0.66rem;
+        font-weight: 300;
+        color: var(--gray-400);
+        text-align: center;
+        margin-top: 10px;
+      }
 
-    /* ─── RESPONSIVE ──────────────────────────────────── */
-    @media(max-width:900px){
-      .hero-content { padding:0 24px 40px; }
-      .cat-layout { grid-template-columns:1fr; }
-      .cat-nav { position:static; }
-      .cat-grid { grid-template-columns:1fr 1fr; }
-      .cat-grid-row2 { max-width:100%; }
-      .arch-grid { grid-template-columns:1fr; }
-      .arch-img-main { height:340px; }
-      .arch-img-accent { display:none; }
-      .arch-badge { left:12px; }
-      .contact-grid { grid-template-columns:1fr; }
-    }
-    @media(max-width:600px){
-      .cat-grid { grid-template-columns:1fr; }
-      .cat-grid-row2 { grid-template-columns:1fr; }
-      .hero-title { font-size:2.5rem; }
-      .arch-feats { grid-template-columns:1fr; }
-      .f-row { grid-template-columns:1fr; }
-    }
-  </style>
-</head>
-<body>
+      /* ─── RESPONSIVE ──────────────────────────────────── */
+      @media (max-width: 900px) {
+        .hero-content {
+          padding: 0 24px 40px;
+        }
+        .cat-layout {
+          grid-template-columns: 1fr;
+        }
+        .cat-nav {
+          position: static;
+        }
+        .cat-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cat-grid-row2 {
+          max-width: 100%;
+        }
+        .arch-grid {
+          grid-template-columns: 1fr;
+        }
+        .arch-img-main {
+          height: 340px;
+        }
+        .arch-img-accent {
+          display: none;
+        }
+        .arch-badge {
+          left: 12px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 600px) {
+        .cat-grid {
+          grid-template-columns: 1fr;
+        }
+        .cat-grid-row2 {
+          grid-template-columns: 1fr;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .arch-feats {
+          grid-template-columns: 1fr;
+        }
+        .f-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* ─── LOGO BANNER ─────────────────────────────────── */
+      #logo-banner {
+        background: var(--charcoal, #1a1a1a);
+        padding: 56px 24px;
+        text-align: center;
+      }
+      .logo-banner-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .logo-banner-img {
+        width: 220px;
+        max-width: 70vw;
+        filter: invert(1);
+        opacity: 0.95;
+      }
+      .logo-banner-tagline {
+        font-family: var(--font-body, "Raleway", sans-serif);
+        font-size: 0.78rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        margin: 0;
+      }
 
-<!-- ════════════════════ NAV ════════════════════ -->
-<nav id="navbar">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="dream-design-logo.jpeg" alt="Dream Design"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="nav-logo-text" style="display:none">Dream Design</span>
+      /* ─── FOOTER QR CODES ─────────────────────────────── */
+      .footer-qr {
+        display: flex;
+        gap: 16px;
+        margin-top: 20px;
+      }
+      .footer-qr-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .footer-qr-item img {
+        width: 200px;
+        height: 200px;
+
+        background: #363434;
+        border-radius: 20px;
+        padding: 6px;
+      }
+      .footer-qr-item span {
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.45);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════════════ NAV ════════════════════ -->
+    <nav id="navbar">
+      <div class="container">
+        <div class="nav-inner">
+          <a href="index.html" class="nav-logo">
+            <img
+              src="assets/logo/dream-design-logo-translucent.png"
+              alt="Dream Design"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <span class="nav-logo-text" style="display: none"
+              >Dream Design</span
+            >
+          </a>
+          <ul class="nav-links">
+            <li><a href="#hero">Accueil</a></li>
+            <li class="has-drop">
+              <a href="#categories">Catégories ▾</a>
+              <div class="dropdown">
+                <a href="categorie.html?category=architecture"
+                  ><span class="cat-dot"></span>Architecture
+                </a>
+                <a href="categorie.html?category=meubles"
+                  ><span class="cat-dot"></span>Meubles</a
+                >
+                <a href="categorie.html?category=ameublement"
+                  ><span class="cat-dot"></span>Ameublement</a
+                >
+                <a href="categorie.html?category=pack-enfant"
+                  ><span class="cat-dot"></span>Pack Bébé / Enfant
+                </a>
+                <a href="categorie.html?category=siesta"
+                  ><span class="cat-dot"></span>Super Siesta</a
+                >
+                <a href="categorie.html?category=pack-mariage"
+                  ><span class="cat-dot"></span>Pack Mariage
+                </a>
+              </div>
+            </li>
+            <li>
+              <a href="categorie.html?category=architecture">Architecture</a>
+            </li>
+            <li><a href="#architecture">Showroom</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+          </ul>
+          <button class="burger" id="burger">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#hero" class="ml">Accueil</a>
+      <div class="mobile-nav-sub">
+        <a href="categorie.html?category=architecture" class="ml"
+          >→ Architecture</a
+        >
+        <a href="categorie.html?category=meubles" class="ml">→ Meubles</a>
+        <a href="categorie.html?category=ameublement" class="ml"
+          >→ Ameublement</a
+        >
+        <a href="categorie.html?category=pack-enfant" class="ml"
+          >→ Pack Bébé / Enfant</a
+        >
+        <a href="categorie.html?category=siesta" class="ml">→ Super Siesta</a>
+        <a href="categorie.html?category=pack-mariage" class="ml"
+          >→ Pack Mariage</a
+        >
+      </div>
+      <a href="categorie.html?category=architecture" class="ml">Architecture</a>
+      <a href="#contact" class="ml">Contact</a>
+    </div>
+
+    <!-- ════════════════════ FLOATING SOCIAL ════════════════════ -->
+    <div class="float-social">
+      <a
+        href="https://wa.me/21620797665"
+        class="fs-wa"
+        title="WhatsApp"
+        target="_blank"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+          />
+        </svg>
       </a>
-      <ul class="nav-links">
-        <li><a href="#hero">Accueil</a></li>
-        <li class="has-drop">
-          <a href="#categories">Catégories ▾</a>
-          <div class="dropdown">
-            <a href="categorie.html?cat=meubles"><span class="cat-dot"></span>Meubles</a>
-            <a href="categorie.html?cat=ameublement"><span class="cat-dot"></span>Ameublement</a>
-            <a href="categorie.html?cat=pack-enfant"><span class="cat-dot"></span>Pack Enfant <span class="badge-enfant">Nouveau</span></a>
-            <a href="categorie.html?cat=siesta"><span class="cat-dot"></span>Super Siesta</a>
-            <a href="categorie.html?cat=pack-mariage"><span class="cat-dot"></span>Pack Mariage <span class="badge-mariage">Nouveau</span></a>
-          </div>
-        </li>
-        <li><a href="#architecture">Architecture</a></li>
-        <li><a href="#architecture">Showroom</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
-      </ul>
-      <button class="burger" id="burger"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</nav>
-<div class="mobile-nav" id="mobileNav">
-  <a href="#hero" class="ml">Accueil</a>
-  <div class="mobile-nav-sub">
-    <a href="categorie.html?cat=meubles" class="ml">→ Meubles</a>
-    <a href="categorie.html?cat=ameublement" class="ml">→ Ameublement</a>
-    <a href="categorie.html?cat=pack-enfant" class="ml">→ Pack Enfant</a>
-    <a href="categorie.html?cat=siesta" class="ml">→ Super Siesta</a>
-    <a href="categorie.html?cat=pack-mariage" class="ml">→ Pack Mariage</a>
-  </div>
-  <a href="#architecture" class="ml">Architecture</a>
-  <a href="#contact" class="ml">Contact</a>
-</div>
-
-<!-- ════════════════════ FLOATING SOCIAL ════════════════════ -->
-<div class="float-social">
-  <a href="https://wa.me/216XXXXXXXX" class="fs-wa" title="WhatsApp" target="_blank">
-    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-  </a>
-  <a href="https://www.instagram.com/dream_design_tn/" class="fs-ig" title="Instagram" target="_blank">
-    <svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-  </a>
-  <a href="https://www.facebook.com/profile.php?id=61573263923119" class="fs-fb" title="Facebook" target="_blank">
-    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-  </a>
-</div>
-
-<!-- ════════════════════ HERO CAROUSEL ════════════════════ -->
-<section id="hero">
-  <div class="slides" id="slides">
-    <div class="slide active"><div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1800&q=80')"></div><div class="slide-overlay"></div></div>
-    <div class="slide"><div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1800&q=80')"></div><div class="slide-overlay"></div></div>
-    <div class="slide"><div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1800&q=80')"></div><div class="slide-overlay"></div></div>
-    <div class="slide"><div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1800&q=80')"></div><div class="slide-overlay"></div></div>
-    <div class="slide"><div class="slide-bg" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800&q=80')"></div><div class="slide-overlay"></div></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-tag">Dream Design · Rawya Habbesi Architecte</div>
-    <h1 class="hero-title">Nous réalisons<br/>vos <em>rêves</em><br/>sur mesure</h1>
-    <p class="hero-desc">Architecture, design d'intérieur, visualisation 3D et ameublement complet.<br/>Showroom à Cité Ennasr, Tunis.</p>
-    <div class="hero-btns">
-      <a href="#categories" class="btn-white">
-        Découvrir le catalogue
-        <svg width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <a
+        href="https://www.instagram.com/dream_design_tn/"
+        class="fs-ig"
+        title="Instagram"
+        target="_blank"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
       </a>
-      <a href="#contact" class="btn-outline-w">Prendre rendez-vous</a>
+      <a
+        href="https://www.facebook.com/people/Dream-Design/61573263923119/"
+        class="fs-fb"
+        title="Facebook"
+        target="_blank"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path
+            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+          />
+        </svg>
+      </a>
     </div>
-  </div>
-  <button class="c-arrow c-prev" id="cPrev"><svg width="18" height="18" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <button class="c-arrow c-next" id="cNext"><svg width="18" height="18" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
-  <div class="c-dots" id="cDots">
-    <div class="c-dot active" data-i="0"></div>
-    <div class="c-dot" data-i="1"></div>
-    <div class="c-dot" data-i="2"></div>
-    <div class="c-dot" data-i="3"></div>
-    <div class="c-dot" data-i="4"></div>
-  </div>
-</section>
 
-<!-- STRIP -->
-<div class="strip">
-  <div class="strip-track">
-    <span class="strip-item"><span class="dot"></span>Architecture & Design</span>
-    <span class="strip-item"><span class="dot"></span>Meubles Sur Mesure</span>
-    <span class="strip-item"><span class="dot"></span>Pack Mariage</span>
-    <span class="strip-item"><span class="dot"></span>Pack Enfant</span>
-    <span class="strip-item"><span class="dot"></span>Super Siesta</span>
-    <span class="strip-item"><span class="dot"></span>Rideaux & Tapis</span>
-    <span class="strip-item"><span class="dot"></span>Visualisation 3D</span>
-    <span class="strip-item"><span class="dot"></span>Showroom Cité Ennasr</span>
-    <span class="strip-item"><span class="dot"></span>Livraison Tunisie & International</span>
-    <!-- duplicate -->
-    <span class="strip-item"><span class="dot"></span>Architecture & Design</span>
-    <span class="strip-item"><span class="dot"></span>Meubles Sur Mesure</span>
-    <span class="strip-item"><span class="dot"></span>Pack Mariage</span>
-    <span class="strip-item"><span class="dot"></span>Pack Enfant</span>
-    <span class="strip-item"><span class="dot"></span>Super Siesta</span>
-    <span class="strip-item"><span class="dot"></span>Rideaux & Tapis</span>
-    <span class="strip-item"><span class="dot"></span>Visualisation 3D</span>
-    <span class="strip-item"><span class="dot"></span>Showroom Cité Ennasr</span>
-    <span class="strip-item"><span class="dot"></span>Livraison Tunisie & International</span>
-  </div>
-</div>
-
-<!-- ════════════════════ CATEGORIES ════════════════════ -->
-<section id="categories" class="section-pad">
-  <div class="container">
-    <div style="margin-bottom:50px">
-      <div class="lbl">Nos Collections</div>
-      <h2 class="serif">Explorez notre univers<br/><em>de l'ameublement</em></h2>
-    </div>
-    <div class="cat-layout">
-
-      <!-- Accordion LEFT -->
-      <nav class="cat-nav reveal-l">
-        <p class="cat-nav-hd">Toutes les catégories</p>
-
-        <!-- Meubles -->
-        <div class="cat-group">
-          <div class="cg-header open" data-g="meubles">
-            <span class="cg-name">Meubles</span>
-            <svg class="cg-chevron" width="16" height="16" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="cat-subs open" id="sg-meubles">
-            <a class="csl" href="categorie.html?cat=meubles&sub=lit">Lit</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=tables-nuit">Tables de Nuit</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=dressing">Dressing</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=chaises">Chaises</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=tables-basses">Tables Basses</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=tables-manger">Tables à Manger</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=buffet">Buffet</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=console">Console</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=meuble-tv">Meuble TV</a>
-            <a class="csl" href="categorie.html?cat=meubles&sub=bureau">Bureau</a>
-            <a class="csl-main" href="categorie.html?cat=meubles">Voir tous les meubles →</a>
-          </div>
+    <!-- ════════════════════ HERO CAROUSEL ════════════════════ -->
+    <section id="hero">
+      <div class="slides" id="slides">
+        <div class="slide active">
+          <div
+            class="slide-bg"
+            style="
+              background-image: url(&quot;assets/archi/4511fbe8b485cf4c3157f102b4c87723.jpg&quot;);
+            "
+          ></div>
+          <div class="slide-overlay"></div>
         </div>
-
-        <!-- Ameublement -->
-        <div class="cat-group">
-          <div class="cg-header" data-g="ameublement">
-            <span class="cg-name">Ameublement</span>
-            <svg class="cg-chevron" width="16" height="16" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="cat-subs" id="sg-ameublement">
-            <a class="csl" href="categorie.html?cat=ameublement&sub=linges">Linges Maison</a>
-            <a class="csl" href="categorie.html?cat=ameublement&sub=rideaux">Rideaux</a>
-            <a class="csl" href="categorie.html?cat=ameublement&sub=tapis">Tapis</a>
-            <a class="csl" href="categorie.html?cat=ameublement&sub=miroirs">Miroirs</a>
-            <a class="csl" href="categorie.html?cat=ameublement&sub=vases">Vases</a>
-            <a class="csl" href="categorie.html?cat=ameublement&sub=tableaux">Tableaux</a>
-            <a class="csl-main" href="categorie.html?cat=ameublement">Voir tout l'ameublement →</a>
-          </div>
+        <div class="slide">
+          <div
+            class="slide-bg"
+            style="
+              background-image: url(&quot;assets/archi/474b676f74d7aeeb9092563e1ea27d0d.jpg&quot;);
+            "
+          ></div>
+          <div class="slide-overlay"></div>
         </div>
-
-        <!-- Pack Enfant -->
-        <div class="cat-group">
-          <div class="cg-header" data-g="pack-enfant">
-            <span class="cg-name">Pack Enfant</span>
-            <span class="cg-badge enfant">Pack</span>
-          </div>
-          <div class="cat-subs" id="sg-pack-enfant">
-            <a class="csl" href="categorie.html?cat=pack-enfant&sub=bebe">Bébé</a>
-            <a class="csl" href="categorie.html?cat=pack-enfant&sub=juniors">Enfant / Junior</a>
-            <a class="csl-main" href="categorie.html?cat=pack-enfant">Voir le Pack Enfant →</a>
-          </div>
+        <div class="slide">
+          <div
+            class="slide-bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1800&q=80&quot;);
+            "
+          ></div>
+          <div class="slide-overlay"></div>
         </div>
-
-        <!-- Super Siesta -->
-        <div class="cat-group">
-          <div class="cg-header" data-g="siesta">
-            <span class="cg-name">Super Siesta</span>
-            <svg class="cg-chevron" width="16" height="16" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="cat-subs" id="sg-siesta">
-            <a class="csl" href="categorie.html?cat=siesta&sub=canapes">Canapés</a>
-            <a class="csl" href="categorie.html?cat=siesta&sub=fauteuils">Fauteuils & Poufs</a>
-            <a class="csl-main" href="categorie.html?cat=siesta">Voir Super Siesta →</a>
-          </div>
+        <div class="slide">
+          <div
+            class="slide-bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1800&q=80&quot;);
+            "
+          ></div>
+          <div class="slide-overlay"></div>
         </div>
-
-        <!-- Pack Mariage -->
-        <div class="cat-group">
-          <div class="cg-header" data-g="pack-mariage">
-            <span class="cg-name">Pack Mariage</span>
-            <span class="cg-badge mariage">Nouveau</span>
-          </div>
-          <div class="cat-subs" id="sg-pack-mariage">
-            <a class="csl" href="categorie.html?cat=pack-mariage&sub=mobilier">Mobilier Réception</a>
-            <a class="csl" href="categorie.html?cat=pack-mariage&sub=decoration">Décoration</a>
-            <a class="csl" href="categorie.html?cat=pack-mariage&sub=linge">Linge de Table</a>
-            <a class="csl-main" href="categorie.html?cat=pack-mariage">Voir le Pack Mariage →</a>
-          </div>
+        <div class="slide">
+          <div
+            class="slide-bg"
+            style="
+              background-image: url(&quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800&q=80&quot;);
+            "
+          ></div>
+          <div class="slide-overlay"></div>
         </div>
-      </nav>
-
-      <!-- Grid RIGHT — 5 cartes -->
-      <div>
-        <!-- Row 1 : 3 cartes -->
-        <div class="cat-grid" style="margin-bottom:16px">
-          <a class="cat-card reveal d1" href="categorie.html?cat=meubles">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=700&q=80" alt="Meubles" />
-            <div class="cat-ov"><div class="cat-ov-lbl">01</div><div class="cat-ov-name">Meubles</div><div class="cat-ov-sub">10 sous-catégories</div></div>
-            <div class="cat-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-tag">Dream Design · Rawya Habbesi Architecte</div>
+        <h1 class="hero-title">
+          Nous réalisons<br />vos <em>rêves</em><br />sur mesure
+        </h1>
+        <p class="hero-desc">
+          Architecture, design d'intérieur, visualisation 3D et ameublement
+          complet.<br />Showroom à Cité Ennasr, Tunis.
+        </p>
+        <div class="hero-btns">
+          <a href="#categories" class="btn-white">
+            Découvrir le catalogue
+            <svg width="15" height="15" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
-          <a class="cat-card reveal d2" href="categorie.html?cat=ameublement">
-            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=700&q=80" alt="Ameublement" />
-            <div class="cat-ov"><div class="cat-ov-lbl">02</div><div class="cat-ov-name">Ameublement</div><div class="cat-ov-sub">Rideaux · Tapis · Miroirs</div></div>
-            <div class="cat-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </a>
-          <a class="cat-card reveal d3" href="categorie.html?cat=siesta">
-            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80" alt="Super Siesta" />
-            <div class="cat-ov"><div class="cat-ov-lbl">03</div><div class="cat-ov-name">Super Siesta</div><div class="cat-ov-sub">Canapés & Fauteuils</div></div>
-            <div class="cat-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </a>
-        </div>
-        <!-- Row 2 : 2 cartes centrées -->
-        <div class="cat-grid-row2">
-          <a class="cat-card reveal d4" href="categorie.html?cat=pack-enfant">
-            <!-- ✦ Photo chambre enfant claire et explicite -->
-            <img src="https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?w=700&q=80" alt="Pack Enfant" />
-            <span class="cat-card-badge enfant">Pack Enfant</span>
-            <div class="cat-ov"><div class="cat-ov-lbl">04</div><div class="cat-ov-name">Pack Enfant</div><div class="cat-ov-sub">Bébé & Junior</div></div>
-            <div class="cat-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </a>
-          <a class="cat-card reveal d5" href="categorie.html?cat=pack-mariage">
-            <!-- ✦ Photo réception de mariage élégante -->
-            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80" alt="Pack Mariage" />
-            <span class="cat-card-badge mariage">Pack Mariage</span>
-            <div class="cat-ov"><div class="cat-ov-lbl">05</div><div class="cat-ov-name">Pack Mariage</div><div class="cat-ov-sub">Mobilier & Décoration</div></div>
-            <div class="cat-card-arrow"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-          </a>
+          <a href="#contact" class="btn-outline-w">Prendre rendez-vous</a>
         </div>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════ ARCHITECTURE ════════════════════ -->
-<section id="architecture" class="section-pad">
-  <div class="container">
-    <div class="arch-grid">
-      <div class="arch-img-wrap reveal-l">
-        <div class="arch-img-main">
-          <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80" alt="Rawya Habbesi Architecte" />
-        </div>
-        <div class="arch-img-accent">
-          <img src="dream-design-logo.jpeg" alt="Dream Design"
-            style="object-fit:contain;background:#f2f2f2;padding:14px;"
-            onerror="this.src='https://images.unsplash.com/photo-1616138359977-2f9c45d3dc93?w=300&q=80'" />
-        </div>
-        <div class="arch-badge">
-          <div class="num">12+</div>
-          <div class="lbl">Ans d'exp.</div>
-        </div>
+      <button class="c-arrow c-prev" id="cPrev">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+      <button class="c-arrow c-next" id="cNext">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+      <div class="c-dots" id="cDots">
+        <div class="c-dot active" data-i="0"></div>
+        <div class="c-dot" data-i="1"></div>
+        <div class="c-dot" data-i="2"></div>
+        <div class="c-dot" data-i="3"></div>
+        <div class="c-dot" data-i="4"></div>
       </div>
-      <div class="arch-content reveal-r">
-        <div class="lbl">Architecte & Fondatrice</div>
-        <h2 class="serif" style="margin-bottom:22px;">Rawya Habbesi<br/><em>Dream Design</em></h2>
-        <p>Architecte diplômée et passionnée, <strong>Rawya Habbesi</strong> est fondatrice de <strong>Dream Design</strong> — une marque née de l'envie profonde de transformer chaque espace en un lieu de vie unique, fonctionnel et élégant.</p>
-        <p>Son approche globale couvre la <strong>conception architecturale</strong>, la <strong>visualisation 3D</strong> et l'ameublement complet. Son <strong>showroom à Cité Ennasr</strong> propose une sélection exclusive de mobilier, textiles et décoration, avec livraison en <strong>Tunisie et à l'international</strong>.</p>
-        <div class="arch-feats">
-          <div class="arch-feat">
-            <div class="fi"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-            <h4>Architecture</h4><p>Résidentielle, commerciale & rénovation</p>
-          </div>
-          <div class="arch-feat">
-            <div class="fi"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-            <h4>Visualisation 3D</h4><p>Rendus photoréalistes avant travaux</p>
-          </div>
-          <div class="arch-feat">
-            <div class="fi"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
-            <h4>Meubles Sur Mesure</h4><p>Conception & fabrication personnalisée</p>
-          </div>
-          <div class="arch-feat">
-            <div class="fi"><svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-            <h4>Livraison</h4><p>Tunisie entière & international</p>
-          </div>
-        </div>
-        <a href="#contact" class="arch-cta">
-          <svg width="15" height="15" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-          Showroom — Cité Ennasr
-        </a>
+    </section>
+
+    <!-- STRIP -->
+    <div class="strip">
+      <div class="strip-track">
+        <span class="strip-item"
+          ><span class="dot"></span>Architecture & Design</span
+        >
+        <span class="strip-item"
+          ><span class="dot"></span>Meubles Sur Mesure</span
+        >
+        <span class="strip-item"><span class="dot"></span>Pack Mariage</span>
+        <span class="strip-item"
+          ><span class="dot"></span>Pack Bébé / Enfant</span
+        >
+        <span class="strip-item"><span class="dot"></span>Super Siesta</span>
+        <span class="strip-item"><span class="dot"></span>Rideaux & Tapis</span>
+        <span class="strip-item"
+          ><span class="dot"></span>Visualisation 3D</span
+        >
+        <span class="strip-item"
+          ><span class="dot"></span>Showroom Cité Ennasr</span
+        >
+        <span class="strip-item"
+          ><span class="dot"></span>Livraison Tunisie & International</span
+        >
+        <!-- duplicate -->
+        <span class="strip-item"
+          ><span class="dot"></span>Architecture & Design</span
+        >
+        <span class="strip-item"
+          ><span class="dot"></span>Meubles Sur Mesure</span
+        >
+        <span class="strip-item"><span class="dot"></span>Pack Mariage</span>
+        <span class="strip-item"
+          ><span class="dot"></span>Pack Bébé / Enfant</span
+        >
+        <span class="strip-item"><span class="dot"></span>Super Siesta</span>
+        <span class="strip-item"><span class="dot"></span>Rideaux & Tapis</span>
+        <span class="strip-item"
+          ><span class="dot"></span>Visualisation 3D</span
+        >
+        <span class="strip-item"
+          ><span class="dot"></span>Showroom Cité Ennasr</span
+        >
+        <span class="strip-item"
+          ><span class="dot"></span>Livraison Tunisie & International</span
+        >
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ════════════════════ CONTACT ════════════════════ -->
-<section id="contact" class="section-pad">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:56px">
-      <div class="lbl" style="display:block;text-align:center">Votre projet nous intéresse</div>
-      <h2 class="serif">Contactez-nous</h2>
+    <!-- ════════════════════ CATEGORIES ════════════════════ -->
+    <section id="categories" class="section-pad">
+      <div class="container">
+        <div style="margin-bottom: 50px">
+          <div class="lbl">Nos Collections</div>
+          <h2 class="serif">
+            Explorez notre univers<br /><em>de l'ameublement</em>
+          </h2>
+        </div>
+        <div class="cat-layout">
+          <!-- Accordion LEFT -->
+          <nav class="cat-nav reveal-l">
+            <p class="cat-nav-hd">Toutes les catégories</p>
+
+            <!-- Architecture -->
+            <div class="cat-group">
+              <div class="cg-header" data-g="architecture">
+                <span class="cg-name">Architecture</span>
+              </div>
+              <div class="cat-subs" id="sg-architecture">
+                <a
+                  class="csl"
+                  href="categorie.html?category=architecture&sub=projets-residentiels"
+                  >Projets Résidentiels</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=architecture&sub=design-interieur"
+                  >Design d'Intérieur</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=architecture&sub=habillage-finitions"
+                  >Habillage & Finitions</a
+                >
+                <a class="csl-main" href="categorie.html?category=architecture"
+                  >Voir toutes les réalisations →</a
+                >
+              </div>
+            </div>
+
+            <!-- Meubles -->
+            <div class="cat-group">
+              <div class="cg-header open" data-g="meubles">
+                <span class="cg-name">Meubles</span>
+                <svg
+                  class="cg-chevron"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="cat-subs open" id="sg-meubles">
+                <a class="csl" href="categorie.html?category=meubles&sub=lit"
+                  >Lit</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=tables-nuit"
+                  >Tables de Nuit</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=dressing"
+                  >Dressing</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=commode-coiffeuse"
+                  >Commode & Coiffeuse</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=chaises"
+                  >Chaises & Fauteuils</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=tables-basses"
+                  >Tables Basses</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=tables-manger"
+                  >Tables à Manger</a
+                >
+                <a class="csl" href="categorie.html?category=meubles&sub=buffet"
+                  >Buffet & Bahut</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=console"
+                  >Meuble d'Entrée</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=meubles&sub=meuble-tv"
+                  >Meuble TV</a
+                >
+                <a class="csl" href="categorie.html?category=meubles&sub=bureau"
+                  >Bureau</a
+                >
+                <a class="csl-main" href="categorie.html?category=meubles"
+                  >Voir tous les meubles →</a
+                >
+              </div>
+            </div>
+
+            <!-- Ameublement -->
+            <div class="cat-group">
+              <div class="cg-header" data-g="ameublement">
+                <span class="cg-name">Ameublement</span>
+                <svg
+                  class="cg-chevron"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="cat-subs" id="sg-ameublement">
+                <a
+                  class="csl"
+                  href="categorie.html?category=ameublement&sub=linge-de-lit"
+                  >Linge de Lit</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=ameublement&sub=luminaires"
+                  >Luminaires</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=ameublement&sub=rideaux"
+                  >Rideaux</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=ameublement&sub=tableaux"
+                  >Tableaux</a
+                >
+                <a class="csl-main" href="categorie.html?category=ameublement"
+                  >Voir tout l'ameublement →</a
+                >
+              </div>
+            </div>
+
+            <!-- Pack Bébé / Enfant -->
+            <div class="cat-group">
+              <div class="cg-header" data-g="pack-enfant">
+                <span class="cg-name">Pack Bébé / Enfant</span>
+              </div>
+              <div class="cat-subs" id="sg-pack-enfant">
+                <a
+                  class="csl"
+                  href="categorie.html?category=pack-enfant&sub=bebe"
+                  >Bébé</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=pack-enfant&sub=juniors"
+                  >Enfant / Junior</a
+                >
+                <a class="csl-main" href="categorie.html?category=pack-enfant"
+                  >Voir le Pack Bébé / Enfant →</a
+                >
+              </div>
+            </div>
+
+            <!-- Super Siesta -->
+            <div class="cat-group">
+              <div class="cg-header" data-g="siesta">
+                <span class="cg-name">Super Siesta</span>
+                <svg
+                  class="cg-chevron"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+              <div class="cat-subs" id="sg-siesta">
+                <a class="csl" href="categorie.html?category=siesta&sub=canapes"
+                  >Canapés</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=siesta&sub=fauteuils"
+                  >Fauteuils & Poufs</a
+                >
+                <a class="csl-main" href="categorie.html?category=siesta"
+                  >Voir Super Siesta →</a
+                >
+              </div>
+            </div>
+
+            <!-- Pack Mariage -->
+            <div class="cat-group">
+              <div class="cg-header" data-g="pack-mariage">
+                <span class="cg-name">Pack Mariage</span>
+              </div>
+              <div class="cat-subs" id="sg-pack-mariage">
+                <a
+                  class="csl"
+                  href="categorie.html?category=pack-mariage&sub=mobilier"
+                  >Mobilier Réception</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=pack-mariage&sub=decoration"
+                  >Décoration</a
+                >
+                <a
+                  class="csl"
+                  href="categorie.html?category=pack-mariage&sub=linge"
+                  >Linge de Table</a
+                >
+                <a class="csl-main" href="categorie.html?category=pack-mariage"
+                  >Voir le Pack Mariage →</a
+                >
+              </div>
+            </div>
+          </nav>
+
+          <!-- Grid RIGHT — 5 cartes -->
+          <div>
+            <!-- Row 1 : 3 cartes -->
+            <div class="cat-grid" style="margin-bottom: 16px">
+              <a
+                class="cat-card reveal d1"
+                href="categorie.html?category=meubles"
+              >
+                <img
+                  src="assets/Lit/04d195af57717372883f65a040ff355a.jpg"
+                  alt="Meubles"
+                />
+                <div class="cat-ov">
+                  <div class="cat-ov-lbl">01</div>
+                  <div class="cat-ov-name">Meubles</div>
+                  <div class="cat-ov-sub">10 sous-catégories</div>
+                </div>
+                <div class="cat-card-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+              <a
+                class="cat-card reveal d2"
+                href="categorie.html?category=ameublement"
+              >
+                <img
+                  src="assets/linge de lit/linge-de-lit-1.jfif"
+                  alt="Ameublement"
+                />
+                <div class="cat-ov">
+                  <div class="cat-ov-lbl">02</div>
+                  <div class="cat-ov-name">Ameublement</div>
+                  <div class="cat-ov-sub">
+                    Linge de Lit · Luminaires · Rideaux · Tableaux
+                  </div>
+                </div>
+                <div class="cat-card-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+              <a
+                class="cat-card reveal d3"
+                href="categorie.html?category=siesta"
+              >
+                <img src="assets/feuteuil/10.jpg" alt="Super Siesta" />
+                <div class="cat-ov">
+                  <div class="cat-ov-lbl">03</div>
+                  <div class="cat-ov-name">Super Siesta</div>
+                  <div class="cat-ov-sub">Canapés & Fauteuils</div>
+                </div>
+                <div class="cat-card-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+            <!-- Row 2 : 3 cartes -->
+            <div class="cat-grid-row2">
+              <a
+                class="cat-card reveal d4"
+                href="categorie.html?category=pack-enfant"
+              >
+                <img src="assets/bebe enfant/2.jpg" alt="Pack Bébé / Enfant" />
+                <span class="cat-card-badge enfant">Pack Bébé / Enfant</span>
+                <div class="cat-ov">
+                  <div class="cat-ov-lbl">04</div>
+                  <div class="cat-ov-name">Pack Bébé / Enfant</div>
+                  <div class="cat-ov-sub">Bébé & Junior</div>
+                </div>
+                <div class="cat-card-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+              <a
+                class="cat-card reveal d5"
+                href="categorie.html?category=pack-mariage"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80"
+                  alt="Pack Mariage"
+                />
+                <span class="cat-card-badge mariage">Pack Mariage</span>
+                <div class="cat-ov">
+                  <div class="cat-ov-lbl">05</div>
+                  <div class="cat-ov-name">Pack Mariage</div>
+                  <div class="cat-ov-sub">Mobilier & Décoration</div>
+                </div>
+                <div class="cat-card-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+              <a
+                class="cat-card reveal d6"
+                href="categorie.html?category=architecture"
+              >
+                <img
+                  src="assets/archi/1422ac596cf02d726d7bab28b5aaf569.jpg"
+                  alt="Architecture"
+                />
+                <span class="cat-card-badge new">Architecture</span>
+                <div class="cat-ov">
+                  <div class="cat-ov-lbl">06</div>
+                  <div class="cat-ov-name">Architecture</div>
+                  <div class="cat-ov-sub">Design & Réalisations</div>
+                </div>
+                <div class="cat-card-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ ARCHITECTURE ════════════════════ -->
+    <section id="architecture" class="section-pad">
+      <div class="container">
+        <div class="arch-grid">
+          <div class="arch-img-wrap reveal-l">
+            <div class="arch-img-main">
+              <img
+                src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80"
+                alt="Rawya Habbesi Architecte"
+              />
+            </div>
+            <div class="arch-img-accent">
+              <img
+                src="assets/logo/dream-design-logo-large.png"
+                alt="Dream Design"
+                style="object-fit: contain; background: #f2f2f2; padding: 14px"
+                onerror="
+                  this.src =
+                    'https://images.unsplash.com/photo-1616138359977-2f9c45d3dc93?w=300&q=80'
+                "
+              />
+            </div>
+            <div class="arch-badge">
+              <div class="num">12+</div>
+              <div class="lbl">Ans d'exp.</div>
+            </div>
+          </div>
+          <div class="arch-content reveal-r">
+            <div class="lbl">Architecte & Fondatrice</div>
+            <h2 class="serif" style="margin-bottom: 22px">
+              Rawya Habbesi<br /><em>Dream Design</em>
+            </h2>
+            <p>
+              Architecte diplômée et passionnée,
+              <strong>Rawya Habbesi</strong> est fondatrice de
+              <strong>Dream Design</strong> — une marque née de l'envie profonde
+              de transformer chaque espace en un lieu de vie unique, fonctionnel
+              et élégant.
+            </p>
+            <p>
+              Son approche globale couvre la
+              <strong>conception architecturale</strong>, la
+              <strong>visualisation 3D</strong> et l'ameublement complet. Son
+              <strong>showroom à Cité Ennasr</strong> propose une sélection
+              exclusive de mobilier, textiles et décoration, avec livraison en
+              <strong>Tunisie et à l'international</strong>.
+            </p>
+            <div class="arch-feats">
+              <div class="arch-feat">
+                <div class="fi">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    <polyline points="9 22 9 12 15 12 15 22" />
+                  </svg>
+                </div>
+                <h4>Architecture</h4>
+                <p>Résidentielle, commerciale & rénovation</p>
+              </div>
+              <div class="arch-feat">
+                <div class="fi">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg>
+                </div>
+                <h4>Visualisation 3D</h4>
+                <p>Rendus photoréalistes avant travaux</p>
+              </div>
+              <div class="arch-feat">
+                <div class="fi">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <path
+                      d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+                    />
+                    <line x1="7" y1="7" x2="7.01" y2="7" />
+                  </svg>
+                </div>
+                <h4>Meubles Sur Mesure</h4>
+                <p>Conception & fabrication personnalisée</p>
+              </div>
+              <div class="arch-feat">
+                <div class="fi">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                </div>
+                <h4>Livraison</h4>
+                <p>Tunisie entière & international</p>
+              </div>
+            </div>
+            <a href="#contact" class="arch-cta">
+              <svg width="15" height="15" viewBox="0 0 24 24">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Showroom — Cité Ennasr
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ CONTACT ════════════════════ -->
+    <section id="contact" class="section-pad">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 56px">
+          <div class="lbl" style="display: block; text-align: center">
+            Votre projet nous intéresse
+          </div>
+          <h2 class="serif">Contactez-nous</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="reveal-l">
+            <h2 class="serif" style="font-size: 1.75rem; margin-bottom: 14px">
+              Une idée ?<br /><em>Réalisons-la ensemble.</em>
+            </h2>
+            <p>
+              Que vous souhaitiez concevoir votre maison, organiser votre
+              mariage, équiper la chambre de votre enfant ou visiter notre
+              showroom, nous sommes là pour vous.
+            </p>
+            <div class="cinfo">
+              <div class="cinfo-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-lbl">Showroom</div>
+                <div class="cinfo-val">Cité Ennasr, Ariana — Tunis</div>
+              </div>
+            </div>
+            <div class="cinfo">
+              <div class="cinfo-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-lbl">Tél / WhatsApp</div>
+                <div class="cinfo-val">+216 20 797 665</div>
+              </div>
+            </div>
+            <div class="cinfo">
+              <div class="cinfo-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24">
+                  <rect width="20" height="16" x="2" y="4" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-lbl">Email</div>
+                <div class="cinfo-val">dreamdesign.support@gmail.com</div>
+              </div>
+            </div>
+            <div class="cinfo">
+              <div class="cinfo-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-lbl">Horaires</div>
+                <div class="cinfo-val">
+                  Lun – Sam : 9h00 – 18h30<br />Dimanche : Sur RDV
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form reveal-r">
+            <div class="form-ttl">Envoyez-nous un message</div>
+            <form action="contact.php" method="POST">
+              <div class="f-row">
+                <input type="text" name="website" style="display: none" />
+                <div class="f-group">
+                  <label>Prénom</label
+                  ><input
+                    type="text"
+                    name="firstname"
+                    placeholder="Votre prénom"
+                    required
+                  />
+                </div>
+                <div class="f-group">
+                  <label>Nom</label
+                  ><input
+                    type="text"
+                    name="lastname"
+                    placeholder="Votre nom"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="f-row">
+                <div class="f-group">
+                  <label>Email</label
+                  ><input
+                    type="email"
+                    name="email"
+                    placeholder="votre@email.com"
+                    required
+                  />
+                </div>
+                <div class="f-group">
+                  <label>Téléphone</label
+                  ><input
+                    type="tel"
+                    name="phoneNumber"
+                    placeholder="+216 xx xxx xxx"
+                  />
+                </div>
+              </div>
+              <div class="f-group">
+                <label>Type de demande</label>
+                <select name="type">
+                  <option value="">Sélectionnez...</option>
+                  <option>Architecture</option>
+                  <option>Design d'Intérieur</option>
+                  <option>Visualisation 3D</option>
+                  <option>Meubles Sur Mesure</option>
+                  <option>Ameublement Complet</option>
+                  <option>Pack Bébé / Enfant</option>
+                  <option>Pack Mariage</option>
+                  <option>Super Siesta</option>
+                  <option>Rideaux & Tapis</option>
+                  <option>Visite Showroom</option>
+                </select>
+              </div>
+              <div class="f-group">
+                <label>Message</label
+                ><textarea
+                  name="message"
+                  placeholder="Décrivez votre projet..."
+                ></textarea>
+              </div>
+              <button type="submit" id="submitBtn" class="f-submit">
+                Envoyer le message
+              </button>
+              <p class="f-note">
+                Réponse sous 24h · Consultation initiale gratuite
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ FOOTER ════════════════════ -->
+    <footer>
+      <div class="footer-map">
+        <iframe
+          src="https://maps.google.com/maps?q=Cit%C3%A9+Ennasr,+Ariana,+Tunisie&z=15&output=embed"
+          allowfullscreen
+          loading="lazy"
+          title="Showroom Dream Design — Cité Ennasr"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+      <div class="footer-body">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="footer-brand-logo">
+                <img
+                  src="./assets/logo/dream-design-logo.png"
+                  alt="Dream Design"
+                  onerror="
+                    this.style.display = 'none';
+                    this.nextElementSibling.style.display = 'block';
+                  "
+                />
+                <span class="brand-name" style="display: none"
+                  >Dream Design</span
+                >
+              </div>
+              <p>
+                Architecture, design d'intérieur, meubles sur mesure, Pack
+                Mariage & Pack Bébé / Enfant. Showroom à Cité Ennasr — livraison
+                Tunisie & international.
+              </p>
+              <div class="footer-social">
+                <a href="https://www.instagram.com/dream_design_tn/"
+                  ><svg width="15" height="15" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg
+                ></a>
+                <a href="https://www.facebook.com/profile.php?id=61573263923119"
+                  ><svg width="15" height="15" viewBox="0 0 24 24">
+                    <path
+                      d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                    /></svg
+                ></a>
+                <a href="#"
+                  ><svg width="15" height="15" viewBox="0 0 24 24">
+                    <path
+                      d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                    /></svg
+                ></a>
+              </div>
+            </div>
+            <div class="footer-col">
+              <h4>Catégories</h4>
+              <ul>
+                <li><a href="categorie.html?category=meubles">Meubles</a></li>
+                <li>
+                  <a href="categorie.html?category=ameublement">Ameublement</a>
+                </li>
+                <li>
+                  <a href="categorie.html?category=pack-enfant"
+                    >Pack Bébé / Enfant</a
+                  >
+                </li>
+                <li>
+                  <a href="categorie.html?category=siesta">Super Siesta</a>
+                </li>
+                <li>
+                  <a href="categorie.html?category=pack-mariage"
+                    >Pack Mariage</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Services</h4>
+              <ul>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#architecture">Design d'Intérieur</a></li>
+                <li><a href="#architecture">Visualisation 3D</a></li>
+                <li><a href="#architecture">Livraison</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Showroom</h4>
+              <ul>
+                <li><a href="#">Cité Ennasr, Ariana</a></li>
+                <li><a href="tel:+21620797665">+216 20 797 665</a></li>
+                <li>
+                  <a href="mailto:dreamdesign.support@gmail.com"
+                    >dreamdesign.support@gmail.com</a
+                  >
+                </li>
+                <li><a href="#">Lun–Sam 9h–18h30</a></li>
+              </ul>
+            </div>
+            <!-- QR Codes — colonne droite -->
+            <div class="footer-col footer-col-qr">
+              <h4>Retrouvez-nous</h4>
+              <div class="footer-qr">
+                <div class="footer-qr-item">
+                  <img
+                    src="assets/logo/instagram.jpg"
+                    alt="QR Code Instagram Dream Design"
+                  />
+                  <span>Instagram</span>
+                </div>
+                <div class="footer-qr-item">
+                  <img
+                    src="assets/logo/facebook.jpg"
+                    alt="QR Code Facebook Dream Design"
+                  />
+                  <span>Facebook</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>© 2025 Dream Design — Rawya Habbesi. Tous droits réservés.</p>
+            <p style="font-size: 0.68rem; color: rgba(255, 255, 255, 0.18)">
+              Architecture & Ameublement · Cité Ennasr, Tunis
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div id="btt" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+      <svg width="15" height="15" viewBox="0 0 24 24">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
     </div>
-    <div class="contact-grid">
-      <div class="reveal-l">
-        <h2 class="serif" style="font-size:1.75rem;margin-bottom:14px">Une idée ?<br/><em>Réalisons-la ensemble.</em></h2>
-        <p>Que vous souhaitiez concevoir votre maison, organiser votre mariage, équiper la chambre de votre enfant ou visiter notre showroom, nous sommes là pour vous.</p>
-        <div class="cinfo">
-          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><div class="cinfo-lbl">Showroom</div><div class="cinfo-val">Cité Ennasr, Ariana — Tunis</div></div>
-        </div>
-        <div class="cinfo">
-          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div><div class="cinfo-lbl">Tél / WhatsApp</div><div class="cinfo-val">+216 XX XXX XXX</div></div>
-        </div>
-        <div class="cinfo">
-          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-          <div><div class="cinfo-lbl">Email</div><div class="cinfo-val">contact@dreamdesign.tn</div></div>
-        </div>
-        <div class="cinfo">
-          <div class="cinfo-icon"><svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div><div class="cinfo-lbl">Horaires</div><div class="cinfo-val">Lun – Sam : 9h00 – 18h30<br/>Dimanche : Sur RDV</div></div>
-        </div>
-        <div class="c-socials">
-          <a href="#" class="cs-btn"><svg width="17" height="17" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="#" class="cs-btn"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="https://wa.me/216XXXXXXXX" class="cs-btn"><svg width="17" height="17" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-        </div>
-      </div>
-      <div class="contact-form reveal-r">
-        <div class="form-ttl">Envoyez-nous un message</div>
-        <form onsubmit="submitForm(event)">
-          <div class="f-row">
-            <div class="f-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" required /></div>
-            <div class="f-group"><label>Nom</label><input type="text" placeholder="Votre nom" required /></div>
-          </div>
-          <div class="f-row">
-            <div class="f-group"><label>Email</label><input type="email" placeholder="votre@email.com" required /></div>
-            <div class="f-group"><label>Téléphone</label><input type="tel" placeholder="+216 XX XXX XXX" /></div>
-          </div>
-          <div class="f-group">
-            <label>Type de demande</label>
-            <select>
-              <option value="">Sélectionnez...</option>
-              <option>Architecture</option>
-              <option>Design d'Intérieur</option>
-              <option>Visualisation 3D</option>
-              <option>Meubles Sur Mesure</option>
-              <option>Ameublement Complet</option>
-              <option>Pack Enfant</option>
-              <option>Pack Mariage</option>
-              <option>Super Siesta</option>
-              <option>Rideaux & Tapis</option>
-              <option>Visite Showroom</option>
-            </select>
-          </div>
-          <div class="f-group"><label>Message</label><textarea placeholder="Décrivez votre projet..."></textarea></div>
-          <button type="submit" class="f-submit">Envoyer le message</button>
-          <p class="f-note">Réponse sous 24h · Consultation initiale gratuite</p>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ════════════════════ FOOTER ════════════════════ -->
-<footer>
-  <div class="footer-map">
-    <iframe src="https://maps.google.com/maps?q=Cit%C3%A9+Ennasr,+Ariana,+Tunisie&z=15&output=embed" allowfullscreen loading="lazy" title="Showroom Dream Design — Cité Ennasr" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-  <div class="footer-body">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-brand-logo">
-            <img src="dream-design-logo.jpeg" alt="Dream Design" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-            <span class="brand-name" style="display:none">Dream Design</span>
-          </div>
-          <p>Architecture, design d'intérieur, meubles sur mesure, Pack Mariage & Pack Enfant. Showroom à Cité Ennasr — livraison Tunisie & international.</p>
-          <div class="footer-social">
-            <a href="https://www.instagram.com/dream_design_tn/"><svg width="15" height="15" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="https://www.facebook.com/profile.php?id=61573263923119"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Catégories</h4>
-          <ul>
-            <li><a href="categorie.html?cat=meubles">Meubles</a></li>
-            <li><a href="categorie.html?cat=ameublement">Ameublement</a></li>
-            <li><a href="categorie.html?cat=pack-enfant">Pack Enfant</a></li>
-            <li><a href="categorie.html?cat=siesta">Super Siesta</a></li>
-            <li><a href="categorie.html?cat=pack-mariage">Pack Mariage</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#architecture">Architecture</a></li>
-            <li><a href="#architecture">Design d'Intérieur</a></li>
-            <li><a href="#architecture">Visualisation 3D</a></li>
-            <li><a href="#architecture">Livraison</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Showroom</h4>
-          <ul>
-            <li><a href="#">Cité Ennasr, Ariana</a></li>
-            <li><a href="tel:+216XXXXXXXX">+216 XX XXX XXX</a></li>
-            <li><a href="mailto:contact@dreamdesign.tn">contact@dreamdesign.tn</a></li>
-            <li><a href="#">Lun–Sam 9h–18h30</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 Dream Design — Rawya Habbesi. Tous droits réservés.</p>
-        <p style="font-size:.68rem;color:rgba(255,255,255,.18)">Architecture & Ameublement · Cité Ennasr, Tunis</p>
-      </div>
-    </div>
-  </div>
-</footer>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const form = document.querySelector("form");
+      const btn = document.getElementById("submitBtn");
 
-<div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg width="15" height="15" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-</div>
+      form.addEventListener("submit", function () {
+        btn.disabled = true;
+        btn.innerText = "Sending please wait...";
+      });
+      if (params.get("error") === "missing_fields") {
+        alert("Please fill all required fields!");
+      }
 
-<script>
-  /* NAV */
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('shadowed', scrollY > 30);
-    document.getElementById('btt').classList.toggle('show', scrollY > 500);
-  });
-  document.getElementById('burger').addEventListener('click', () => {
-    document.getElementById('burger').classList.toggle('open');
-    document.getElementById('mobileNav').classList.toggle('open');
-  });
-  document.querySelectorAll('#mobileNav .ml').forEach(a => a.addEventListener('click', () => {
-    document.getElementById('burger').classList.remove('open');
-    document.getElementById('mobileNav').classList.remove('open');
-  }));
+      if (params.get("error") === "invalid_email") {
+        alert("Please enter a valid email address!");
+      }
 
-  /* CAROUSEL */
-  const slides = Array.from(document.querySelectorAll('.slide'));
-  const dots   = Array.from(document.querySelectorAll('.c-dot'));
-  let cur = 0, tmr;
-  function goTo(n) {
-    slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
-    cur = ((n % slides.length) + slides.length) % slides.length;
-    slides[cur].classList.add('active'); dots[cur].classList.add('active');
-  }
-  function startTmr() { clearInterval(tmr); tmr = setInterval(() => goTo(cur + 1), 5500); }
-  document.getElementById('cNext').addEventListener('click', () => { goTo(cur+1); startTmr(); });
-  document.getElementById('cPrev').addEventListener('click', () => { goTo(cur-1); startTmr(); });
-  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.i); startTmr(); }));
-  startTmr();
+      if (params.get("error") === "server_error") {
+        alert("Something went wrong. Please try again later.");
+      }
 
-  /* ACCORDION */
-  document.querySelectorAll('.cg-header[data-g]').forEach(h => {
-    h.addEventListener('click', () => {
-      const key    = h.dataset.g;
-      const subs   = document.getElementById('sg-' + key);
-      const isOpen = h.classList.contains('open');
-      document.querySelectorAll('.cg-header').forEach(x => x.classList.remove('open'));
-      document.querySelectorAll('.cat-subs').forEach(x => x.classList.remove('open'));
-      if (!isOpen && subs) { h.classList.add('open'); subs.classList.add('open'); }
-    });
-  });
+      if (params.get("success") === "1") {
+        alert(
+          "Merci pour votre demande ! Elle a bien été transmise à notre équipe. Nous reviendrons vers vous dans un délai de 24 heures.",
+        );
+        window.location.href = "index.html";
+      }
 
-  /* SCROLL REVEAL */
-  const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('up'); io.unobserve(x.target); } }), { threshold:.1 });
-  document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => io.observe(el));
+      /* NAV */
+      window.addEventListener("scroll", () => {
+        document
+          .getElementById("navbar")
+          .classList.toggle("shadowed", scrollY > 30);
+        document.getElementById("btt").classList.toggle("show", scrollY > 500);
+      });
+      document.getElementById("burger").addEventListener("click", () => {
+        document.getElementById("burger").classList.toggle("open");
+        document.getElementById("mobileNav").classList.toggle("open");
+      });
+      document.querySelectorAll("#mobileNav .ml").forEach((a) =>
+        a.addEventListener("click", () => {
+          document.getElementById("burger").classList.remove("open");
+          document.getElementById("mobileNav").classList.remove("open");
+        }),
+      );
 
-  /* FORM */
-  function submitForm(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.f-submit');
-    btn.textContent = '✓ Message envoyé !';
-    btn.style.background = '#2e7d32';
-    setTimeout(() => { btn.textContent = 'Envoyer le message'; btn.style.background = ''; e.target.reset(); }, 3500);
-  }
-</script>
-</body>
+      document
+        .querySelectorAll(".nav-links .has-drop > a")
+        .forEach((trigger) => {
+          trigger.addEventListener("click", (event) => {
+            const parent = trigger.closest(".has-drop");
+            const isOpen = parent.classList.contains("open");
+
+            document
+              .querySelectorAll(".nav-links .has-drop")
+              .forEach((item) => item.classList.remove("open"));
+
+            if (!isOpen) parent.classList.add("open");
+            event.preventDefault();
+          });
+        });
+
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest(".nav-links .has-drop")) {
+          document
+            .querySelectorAll(".nav-links .has-drop")
+            .forEach((item) => item.classList.remove("open"));
+        }
+      });
+
+      /* CAROUSEL */
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const dots = Array.from(document.querySelectorAll(".c-dot"));
+      let cur = 0,
+        tmr;
+      function goTo(n) {
+        slides[cur].classList.remove("active");
+        dots[cur].classList.remove("active");
+        cur = ((n % slides.length) + slides.length) % slides.length;
+        slides[cur].classList.add("active");
+        dots[cur].classList.add("active");
+      }
+      function startTmr() {
+        clearInterval(tmr);
+        tmr = setInterval(() => goTo(cur + 1), 5500);
+      }
+      document.getElementById("cNext").addEventListener("click", () => {
+        goTo(cur + 1);
+        startTmr();
+      });
+      document.getElementById("cPrev").addEventListener("click", () => {
+        goTo(cur - 1);
+        startTmr();
+      });
+      dots.forEach((d) =>
+        d.addEventListener("click", () => {
+          goTo(+d.dataset.i);
+          startTmr();
+        }),
+      );
+      startTmr();
+
+      /* ACCORDION */
+      document.querySelectorAll(".cg-header[data-g]").forEach((h) => {
+        h.addEventListener("click", () => {
+          const key = h.dataset.g;
+          const subs = document.getElementById("sg-" + key);
+          const isOpen = h.classList.contains("open");
+          document
+            .querySelectorAll(".cg-header")
+            .forEach((x) => x.classList.remove("open"));
+          document
+            .querySelectorAll(".cat-subs")
+            .forEach((x) => x.classList.remove("open"));
+          if (!isOpen && subs) {
+            h.classList.add("open");
+            subs.classList.add("open");
+          }
+        });
+      });
+
+      /* SCROLL REVEAL */
+      const io = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => {
+            if (x.isIntersecting) {
+              x.target.classList.add("up");
+              io.unobserve(x.target);
+            }
+          }),
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".reveal,.reveal-l,.reveal-r")
+        .forEach((el) => io.observe(el));
+    </script>
+  </body>
 </html>

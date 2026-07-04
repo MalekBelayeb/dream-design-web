@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(python -m http.server 7733)",
+      "Bash(npx --yes playwright-chromium-cli screenshot --url \"http://localhost:7733/categorie.html?cat=architecture\" --output \"/tmp/arch-preview.png\" --wait 2000)",
+      "Bash(python -m http.server 7733 --directory 'c:\\\\Users\\\\Malek\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\4b604222-5544-47dc-8bb5-b0c9e454c9d7\\\\97dda37f-5967-44f9-9fa6-f15328ef5291\\\\local_dd7dac8f-5b0a-44d3-aa20-228135f906fa\\\\outputs\\\\dream-design-v2')",
+      "Bash(node -e ' *)",
+      "Bash(Start-Process \"http://localhost:7733/categorie.html?cat=architecture\")",
+      "Bash(python -m http.server 7734 --directory 'c:\\\\Users\\\\Malek\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\4b604222-5544-47dc-8bb5-b0c9e454c9d7\\\\97dda37f-5967-44f9-9fa6-f15328ef5291\\\\local_dd7dac8f-5b0a-44d3-aa20-228135f906fa\\\\outputs\\\\dream-design-v2')",
+      "PowerShell(Invoke-WebRequest \"http://localhost:7734/products.js\" -UseBasicParsing)",
+      "Bash(python3 -)",
+      "Bash(python -c ' *)",
+      "PowerShell(& \"c:\\\\Users\\\\Malek\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\4b604222-5544-47dc-8bb5-b0c9e454c9d7\\\\97dda37f-5967-44f9-9fa6-f15328ef5291\\\\local_dd7dac8f-5b0a-44d3-aa20-228135f906fa\\\\outputs\\\\dream-design-v2\\\\update_products.ps1\")",
+      "PowerShell(& \"c:\\\\Users\\\\Malek\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\4b604222-5544-47dc-8bb5-b0c9e454c9d7\\\\97dda37f-5967-44f9-9fa6-f15328ef5291\\\\local_dd7dac8f-5b0a-44d3-aa20-228135f906fa\\\\outputs\\\\dream-design-v2\\\\restore_meubles.ps1\")",
+      "Bash(Test-Path \"c:\\\\Users\\\\Malek\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\4b604222-5544-47dc-8bb5-b0c9e454c9d7\\\\97dda37f-5967-44f9-9fa6-f15328ef5291\\\\local_dd7dac8f-5b0a-44d3-aa20-228135f906fa\\\\outputs\\\\dream-design-v2\\\\assets\\\\feuteuil\\\\sejour.jpg\")",
+      "Bash(dir \"c:\\\\Users\\\\Malek\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\4b604222-5544-47dc-8bb5-b0c9e454c9d7\\\\97dda37f-5967-44f9-9fa6-f15328ef5291\\\\local_dd7dac8f-5b0a-44d3-aa20-228135f906fa\\\\outputs\\\\dream-design-v2\\\\assets\\\\qr code\")"
+    ]
+  }
+}

@@ -103,13 +103,15 @@ h2.serif em {
 .nav-links a.active { color:var(--black); background:var(--gray-100); }
 
 /* Dropdown */
-.nav-links .has-drop:hover > .dropdown { opacity:1; pointer-events:all; transform:translateY(0); }
+.nav-links .has-drop.open > .dropdown {
+  opacity:1; pointer-events:all; transform:translateY(0); visibility:visible;
+}
 .dropdown {
   position:absolute; top:calc(100% + 8px); left:0;
   min-width:210px; background:var(--white);
   border:1px solid var(--gray-200); border-radius:var(--radius);
   box-shadow:0 8px 32px rgba(0,0,0,.08);
-  padding:8px; opacity:0; pointer-events:none;
+  padding:8px; opacity:0; visibility:hidden; pointer-events:none;
   transform:translateY(-6px); transition:var(--trans); z-index:100;
 }
 .dropdown a {
@@ -192,10 +194,11 @@ footer { background:var(--black); color:var(--white); padding:0; }
 
 .footer-body { padding:60px 0 0; }
 .footer-grid {
-  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:50px; padding-bottom:50px;
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr auto;
+  gap:40px; padding-bottom:50px;
   border-bottom:1px solid rgba(255,255,255,.08);
 }
+.footer-col-qr { min-width:0; }
 
 .footer-brand-logo img { height:48px; width:auto; background:#fff; padding:6px 10px; border-radius:6px; margin-bottom:14px; }
 .footer-brand-logo .brand-name { font-family:var(--font-serif); font-size:1.55rem; color:var(--white); margin-bottom:4px; }
