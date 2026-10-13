@@ -32,7 +32,7 @@
 
 /* ─── RESET ──────────────────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html  { scroll-behavior:smooth; font-size:16px; }
+html  { scroll-behavior:smooth; font-size:16px; overflow-x:hidden; }
 body  { font-family:var(--font-sans); font-weight:300; background:var(--white); color:var(--dark); overflow-x:hidden; }
 a     { text-decoration:none; color:inherit; }
 img   { display:block; width:100%; height:100%; object-fit:cover; }
@@ -72,6 +72,7 @@ h2.serif em {
 #navbar {
   position:fixed; top:0; left:0; right:0;
   height:var(--nav-h);
+  display:flex; align-items:center;
   background:rgba(255,255,255,.97);
   backdrop-filter:blur(12px);
   border-bottom:1px solid var(--gray-200);
@@ -79,10 +80,11 @@ h2.serif em {
   transition:box-shadow .3s;
 }
 #navbar.shadowed { box-shadow:0 4px 24px rgba(0,0,0,.07); }
+#navbar > .container { width:100%; }
 
 .nav-inner { display:flex; align-items:center; justify-content:space-between; height:100%; }
 
-.nav-logo img   { height:68px; width:auto; object-fit:contain; display:block; }
+.nav-logo img   { height:52px; width:auto; object-fit:contain; display:block; }
 .nav-logo-text  {
   font-family:var(--font-serif);
   font-size:1.6rem; font-weight:400;
@@ -162,13 +164,13 @@ h2.serif em {
 
 /* ─── FLOATING SOCIAL ────────────────────────────────────────── */
 .float-social {
-  position:fixed; right:0; top:50%;
-  transform:translateY(-50%);
+  position:fixed; right:0; bottom:24px;
   z-index:900; display:flex; flex-direction:column; gap:2px;
 }
 .float-social a {
   display:flex; align-items:center; justify-content:center;
-  width:46px; height:46px; transition:transform .25s, filter .25s;
+  width:46px; height:46px; border-radius:50%;
+  transition:transform .25s, filter .25s;
 }
 .float-social a:hover { transform:translateX(-5px); filter:brightness(.88); }
 .float-social .fs-wa { background:#25D366; }
@@ -291,4 +293,17 @@ footer { background:var(--black); color:var(--white); padding:0; }
   .section-pad { padding:48px 0; }
   .footer-grid { grid-template-columns:1fr; }
   .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
+
+  /* Stack back-to-top above the floating social icons instead of
+     beside them — side-by-side leaves almost no gap on narrow screens */
+  .float-social { bottom:16px; right:10px; gap:8px; }
+  .float-social a { width:42px; height:42px; }
+  #btt { right:16px; bottom:180px; width:38px; height:38px; }
+}
+/* Narrowest phones (iPhone SE 375px, Galaxy S20 360px, and smaller) —
+   the 600px sizing still runs a little large on these, so tighten further */
+@media (max-width:400px)  {
+  .float-social { bottom:12px; right:8px; gap:6px; }
+  .float-social a { width:38px; height:38px; }
+  #btt { right:12px; bottom:154px; width:34px; height:34px; }
 }

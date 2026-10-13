@@ -107,6 +107,20 @@
         padding-right: 50%;
         z-index: 2;
       }
+      .hero-logo {
+        position: absolute;
+        top: 50%;
+        right: clamp(24px, 8vw, 120px);
+        transform: translateY(-50%);
+        width: clamp(200px, 22vw, 380px);
+        height: auto;
+        aspect-ratio: 707 / 547;
+        object-fit: contain;
+        opacity: 0.92;
+        z-index: 1;
+        pointer-events: none;
+        filter: invert(1) drop-shadow(0 10px 34px rgba(0, 0, 0, 0.45));
+      }
       .hero-tag {
         display: inline-flex;
         align-items: center;
@@ -291,6 +305,28 @@
       #categories {
         background: var(--bg);
         padding: 90px 0;
+      }
+      .cat-sub-desc {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 18px;
+        padding: 11px 22px 11px 18px;
+        background: rgba(196, 162, 101, 0.1);
+        border: 1px solid rgba(196, 162, 101, 0.35);
+        border-radius: 30px;
+      }
+      .cat-sub-desc svg {
+        flex-shrink: 0;
+        stroke: #b8945a;
+      }
+      .cat-sub-desc span {
+        font-family: var(--font-sans);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gray-700);
       }
       .cat-layout {
         display: grid;
@@ -860,6 +896,18 @@
         .hero-content {
           padding: 0 24px 40px;
         }
+        .c-arrow {
+          display: none;
+        }
+        .hero-logo {
+          top: 28px;
+          right: auto;
+          left: 50%;
+          bottom: auto;
+          transform: translateX(-50%);
+          width: 130px;
+          opacity: 0.95;
+        }
         .cat-layout {
           grid-template-columns: 1fr;
         }
@@ -935,6 +983,7 @@
       /* ─── FOOTER QR CODES ─────────────────────────────── */
       .footer-qr {
         display: flex;
+        flex-wrap: wrap;
         gap: 16px;
         margin-top: 20px;
       }
@@ -945,11 +994,11 @@
         gap: 6px;
       }
       .footer-qr-item img {
-        width: 200px;
-        height: 200px;
-
+        width: 110px;
+        height: 110px;
+        max-width: 100%;
         background: #363434;
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 6px;
       }
       .footer-qr-item span {
@@ -967,7 +1016,7 @@
         <div class="nav-inner">
           <a href="index.html" class="nav-logo">
             <img
-              src="assets/logo/dream-design-logo-translucent.png"
+              src="assets/logo/dream-design-logo-tight.png"
               alt="Dream Design"
               onerror="
                 this.style.display = 'none';
@@ -1006,7 +1055,6 @@
             <li>
               <a href="categorie.html?category=architecture">Architecture</a>
             </li>
-            <li><a href="#architecture">Showroom</a></li>
             <li><a href="#contact" class="nav-cta">Contact</a></li>
           </ul>
           <button class="burger" id="burger">
@@ -1083,57 +1131,46 @@
         <div class="slide active">
           <div
             class="slide-bg"
-            style="
-              background-image: url(&quot;assets/archi/4511fbe8b485cf4c3157f102b4c87723.jpg&quot;);
-            "
+            style="background-image: url(&quot;assets/banner/hero_7.jpg&quot;)"
           ></div>
           <div class="slide-overlay"></div>
         </div>
         <div class="slide">
           <div
             class="slide-bg"
-            style="
-              background-image: url(&quot;assets/archi/474b676f74d7aeeb9092563e1ea27d0d.jpg&quot;);
-            "
+            style="background-image: url(&quot;assets/banner/hero_4.jpg&quot;)"
+          ></div>
+          <div class="slide-overlay"></div>
+        </div>
+
+        <div class="slide">
+          <div
+            class="slide-bg"
+            style="background-image: url(&quot;assets/banner/hero_2.png&quot;)"
           ></div>
           <div class="slide-overlay"></div>
         </div>
         <div class="slide">
           <div
             class="slide-bg"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1800&q=80&quot;);
-            "
-          ></div>
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide">
-          <div
-            class="slide-bg"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1800&q=80&quot;);
-            "
-          ></div>
-          <div class="slide-overlay"></div>
-        </div>
-        <div class="slide">
-          <div
-            class="slide-bg"
-            style="
-              background-image: url(&quot;https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1800&q=80&quot;);
-            "
+            style="background-image: url(&quot;assets/banner/hero_3.jpg&quot;)"
           ></div>
           <div class="slide-overlay"></div>
         </div>
       </div>
       <div class="hero-content">
+        <img
+          src="assets/logo/dream-design-logo-tight.png"
+          alt="Dream Design"
+          class="hero-logo"
+        />
         <div class="hero-tag">Dream Design · Rawya Habbesi Architecte</div>
         <h1 class="hero-title">
           Nous réalisons<br />vos <em>rêves</em><br />sur mesure
         </h1>
         <p class="hero-desc">
           Architecture, design d'intérieur, visualisation 3D et ameublement
-          complet.<br />Showroom à Cité Ennasr, Tunis.
+          complet.<br />
         </p>
         <div class="hero-btns">
           <a href="#categories" class="btn-white">
@@ -1182,9 +1219,7 @@
         <span class="strip-item"
           ><span class="dot"></span>Visualisation 3D</span
         >
-        <span class="strip-item"
-          ><span class="dot"></span>Showroom Cité Ennasr</span
-        >
+
         <span class="strip-item"
           ><span class="dot"></span>Livraison Tunisie & International</span
         >
@@ -1204,9 +1239,7 @@
         <span class="strip-item"
           ><span class="dot"></span>Visualisation 3D</span
         >
-        <span class="strip-item"
-          ><span class="dot"></span>Showroom Cité Ennasr</span
-        >
+
         <span class="strip-item"
           ><span class="dot"></span>Livraison Tunisie & International</span
         >
@@ -1221,6 +1254,9 @@
           <h2 class="serif">
             Explorez notre univers<br /><em>de l'ameublement</em>
           </h2>
+          <div class="cat-sub-desc">
+            <span>Tous nos articles sont réalisés sur mesure</span>
+          </div>
         </div>
         <div class="cat-layout">
           <!-- Accordion LEFT -->
@@ -1399,13 +1435,8 @@
                 </svg>
               </div>
               <div class="cat-subs" id="sg-siesta">
-                <a class="csl" href="categorie.html?category=siesta&sub=canapes"
-                  >Canapés</a
-                >
-                <a
-                  class="csl"
-                  href="categorie.html?category=siesta&sub=fauteuils"
-                  >Fauteuils & Poufs</a
+                <a class="csl" href="categorie.html?category=siesta&sub=matelas"
+                  >Matelas</a
                 >
                 <a class="csl-main" href="categorie.html?category=siesta"
                   >Voir Super Siesta →</a
@@ -1489,11 +1520,11 @@
                 class="cat-card reveal d3"
                 href="categorie.html?category=siesta"
               >
-                <img src="assets/feuteuil/10.jpg" alt="Super Siesta" />
+                <img src="assets/supersiesta/logo.png" alt="Super Siesta" />
                 <div class="cat-ov">
                   <div class="cat-ov-lbl">03</div>
                   <div class="cat-ov-name">Super Siesta</div>
-                  <div class="cat-ov-sub">Canapés & Fauteuils</div>
+                  <div class="cat-ov-sub">Matelas</div>
                 </div>
                 <div class="cat-card-arrow">
                   <svg width="14" height="14" viewBox="0 0 24 24">
@@ -1610,8 +1641,8 @@
               Son approche globale couvre la
               <strong>conception architecturale</strong>, la
               <strong>visualisation 3D</strong> et l'ameublement complet. Son
-              <strong>showroom à Cité Ennasr</strong> propose une sélection
-              exclusive de mobilier, textiles et décoration, avec livraison en
+              univers propose une sélection exclusive de mobilier, textiles et
+              décoration, avec livraison en
               <strong>Tunisie et à l'international</strong>.
             </p>
             <div class="arch-feats">
@@ -1660,13 +1691,6 @@
                 <p>Tunisie entière & international</p>
               </div>
             </div>
-            <a href="#contact" class="arch-cta">
-              <svg width="15" height="15" viewBox="0 0 24 24">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              Showroom — Cité Ennasr
-            </a>
           </div>
         </div>
       </div>
@@ -1688,21 +1712,10 @@
             </h2>
             <p>
               Que vous souhaitiez concevoir votre maison, organiser votre
-              mariage, équiper la chambre de votre enfant ou visiter notre
-              showroom, nous sommes là pour vous.
+              mariage, équiper la chambre de votre enfant nous sommes là pour
+              vous.
             </p>
-            <div class="cinfo">
-              <div class="cinfo-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </div>
-              <div>
-                <div class="cinfo-lbl">Showroom</div>
-                <div class="cinfo-val">Cité Ennasr, Ariana — Tunis</div>
-              </div>
-            </div>
+
             <div class="cinfo">
               <div class="cinfo-icon">
                 <svg width="16" height="16" viewBox="0 0 24 24">
@@ -1799,7 +1812,6 @@
                   <option>Pack Mariage</option>
                   <option>Super Siesta</option>
                   <option>Rideaux & Tapis</option>
-                  <option>Visite Showroom</option>
                 </select>
               </div>
               <div class="f-group">
@@ -1823,15 +1835,6 @@
 
     <!-- ════════════════════ FOOTER ════════════════════ -->
     <footer>
-      <div class="footer-map">
-        <iframe
-          src="https://maps.google.com/maps?q=Cit%C3%A9+Ennasr,+Ariana,+Tunisie&z=15&output=embed"
-          allowfullscreen
-          loading="lazy"
-          title="Showroom Dream Design — Cité Ennasr"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
       <div class="footer-body">
         <div class="container">
           <div class="footer-grid">
@@ -1851,7 +1854,7 @@
               </div>
               <p>
                 Architecture, design d'intérieur, meubles sur mesure, Pack
-                Mariage & Pack Bébé / Enfant. Showroom à Cité Ennasr — livraison
+                Mariage & Pack Bébé / Enfant. livraison
                 Tunisie & international.
               </p>
               <div class="footer-social">
@@ -1906,19 +1909,7 @@
                 <li><a href="#architecture">Livraison</a></li>
               </ul>
             </div>
-            <div class="footer-col">
-              <h4>Showroom</h4>
-              <ul>
-                <li><a href="#">Cité Ennasr, Ariana</a></li>
-                <li><a href="tel:+21620797665">+216 20 797 665</a></li>
-                <li>
-                  <a href="mailto:dreamdesign.support@gmail.com"
-                    >dreamdesign.support@gmail.com</a
-                  >
-                </li>
-                <li><a href="#">Lun–Sam 9h–18h30</a></li>
-              </ul>
-            </div>
+
             <!-- QR Codes — colonne droite -->
             <div class="footer-col footer-col-qr">
               <h4>Retrouvez-nous</h4>

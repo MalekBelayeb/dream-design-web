@@ -238,19 +238,56 @@
       .subsec-count {
         font-family: var(--font-sans);
         font-size: 0.7rem;
-        color: var(--gray-400);
-        font-weight: 300;
-        background: var(--gray-100);
+        color: var(--white);
+        font-weight: 500;
+        background: var(--gray-700);
         padding: 3px 10px;
         border-radius: 20px;
       }
 
-      /* Product card extended */
+      /* Product card extended — full-bleed image, title/subtitle overlay */
       .prod-card {
         cursor: pointer;
       }
       .prod-img {
         aspect-ratio: 3/4;
+        position: relative;
+      }
+      .prod-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .prod-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78) 0%,
+          rgba(0, 0, 0, 0.32) 45%,
+          rgba(0, 0, 0, 0) 78%
+        );
+        pointer-events: none;
+      }
+      .prod-overlay .prod-cat {
+        font-family: var(--font-sans);
+        font-size: 0.6rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
+      .prod-overlay .prod-name {
+        font-family: var(--font-serif);
+        font-size: 1.15rem;
+        font-weight: 400;
+        color: var(--white);
+        line-height: 1.25;
       }
 
       /* MODAL */
@@ -304,7 +341,9 @@
         grid-template-columns: 1fr 1fr;
       }
       .modal-img {
-        height: 480px;
+        position: relative;
+        width: 100%;
+        height: clamp(320px, 45vh, 480px);
         background: var(--gray-100);
         border-radius: 6px 0 0 6px;
         overflow: hidden;
@@ -312,14 +351,94 @@
       .modal-img img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
+      }
+
+      /* CAROUSEL (sub-articles) */
+      .mc-track {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .mc-track::-webkit-scrollbar {
+        display: none;
+      }
+      .mc-slide {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+        height: 100%;
+      }
+      .mc-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+      .mc-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid var(--gray-200);
+        background: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 6;
+        font-size: 1.1rem;
+        line-height: 1;
+        color: var(--gray-700);
+        transition: var(--trans);
+      }
+      .mc-arrow:hover {
+        background: var(--white);
+        color: var(--black);
+      }
+      .mc-prev {
+        left: 12px;
+      }
+      .mc-next {
+        right: 12px;
+      }
+      .mc-dots {
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        z-index: 6;
+      }
+      .mc-dot {
+        width: 7px;
+        height: 7px;
+        padding: 0;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.55);
+        cursor: pointer;
+        transition: var(--trans);
+      }
+      .mc-dot.active {
+        background: var(--white);
+        width: 18px;
+        border-radius: 4px;
       }
       .modal-info {
         padding: 44px;
         display: flex;
         flex-direction: column;
         gap: 20px;
-        justify-content: center;
+        justify-content: flex-end;
       }
       .modal-cat {
         font-family: var(--font-sans);
@@ -335,6 +454,13 @@
         font-weight: 400;
         color: var(--black);
         line-height: 1.15;
+      }
+      .modal-desc {
+        font-family: var(--font-sans);
+        font-size: 0.82rem;
+        font-weight: 300;
+        line-height: 1.7;
+        color: var(--gray-700);
       }
       .modal-price {
         font-family: var(--font-sans);
@@ -354,6 +480,32 @@
         color: var(--gray-400);
         margin-bottom: 10px;
         font-weight: 500;
+      }
+      .modal-sizes-table {
+        border: 1px solid var(--gray-200);
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .modal-size-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 11px 14px;
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+      }
+      .modal-size-row:not(:last-child) {
+        border-bottom: 1px solid var(--gray-100);
+      }
+      .modal-size-row .dim {
+        color: var(--black);
+        font-weight: 500;
+      }
+      .modal-size-row .price {
+        color: var(--gray-700);
+        font-weight: 600;
+        white-space: nowrap;
       }
       .modal-colors {
         display: flex;
@@ -499,7 +651,10 @@
           grid-template-columns: 1fr;
         }
         .modal-img {
-          height: 280px;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 4 / 3;
+          max-height: 60vh;
           border-radius: 6px 6px 0 0;
         }
         .cat-hero-content {
@@ -528,7 +683,7 @@
         <div class="nav-inner">
           <a href="index.html" class="nav-logo">
             <img
-              src="assets/logo/dream-design-logo-translucent.png"
+              src="assets/logo/dream-design-logo-tight.png"
               alt="Dream Design"
               onerror="
                 this.style.display = 'none';
@@ -678,11 +833,25 @@
         <button class="modal-close" id="modalCloseBtn">✕</button>
         <div class="modal-grid">
           <div class="modal-img">
-            <img id="mImg" src="" alt="" />
+            <button class="mc-arrow mc-prev" id="mcPrev" aria-label="Précédent">
+              ‹
+            </button>
+            <div class="mc-track" id="mcTrack"></div>
+            <button class="mc-arrow mc-next" id="mcNext" aria-label="Suivant">
+              ›
+            </button>
+            <div class="mc-dots" id="mcDots"></div>
           </div>
           <div class="modal-info">
             <div class="modal-cat" id="mCat"></div>
             <div class="modal-name" id="mName"></div>
+            <p class="modal-desc" id="mDesc" hidden></p>
+            <div class="modal-sizes" id="mSizes" hidden>
+              <div class="modal-section-title">
+                Dimensions et prix selon le tissu
+              </div>
+              <div class="modal-sizes-table" id="mSizesTable"></div>
+            </div>
             <div class="modal-sep"></div>
             <div class="modal-ctas">
               <a
@@ -727,8 +896,7 @@
                 >
               </div>
               <p>
-                Architecture, design d'intérieur et meubles sur mesure —
-                showroom à Cité Ennasr, Tunis.
+                Architecture, design d'intérieur et meubles sur mesure
               </p>
               <div class="footer-social">
                 <a
@@ -850,7 +1018,9 @@
           const parent = trigger.closest(".has-drop");
           const isOpen = parent.classList.contains("open");
 
-          qsa(".nav-links .has-drop").forEach((item) => item.classList.remove("open"));
+          qsa(".nav-links .has-drop").forEach((item) =>
+            item.classList.remove("open"),
+          );
 
           if (!isOpen) parent.classList.add("open");
           event.preventDefault();
@@ -859,7 +1029,9 @@
 
       document.addEventListener("click", (event) => {
         if (!event.target.closest(".nav-links .has-drop")) {
-          qsa(".nav-links .has-drop").forEach((item) => item.classList.remove("open"));
+          qsa(".nav-links .has-drop").forEach((item) =>
+            item.classList.remove("open"),
+          );
         }
       });
 
@@ -1000,27 +1172,26 @@
         div.innerHTML = `
     <div class="prod-img">
       <img src="${p.img}" alt="${p.name}" loading="lazy" />
-    </div>
-    <div class="prod-info">
-      <div class="prod-cat">${p.subLabel}</div>
-      <div class="prod-name">${p.name}</div>
-      <div class="prod-actions">
-        <button class="prod-btn primary" onclick="openModal(event,'${p.id}')">Voir détails</button>
+      <div class="prod-overlay">
+        <div class="prod-cat">${p.subLabel}</div>
+        <div class="prod-name">${p.name}</div>
       </div>
     </div>`;
+        div.addEventListener("click", () => openModal(p.id));
         return div;
       }
 
       /* ── MODAL ────────────────────────────────── */
-      function openModal(e, id) {
-        e.stopPropagation();
+      let mcSlides = [];
+      let mcIndex = 0;
+
+      function openModal(id) {
         const p = getAllProducts().find((x) => x.id === id);
         if (!p) return;
 
-        qs("#mImg").src = p.img;
-        qs("#mImg").alt = p.name;
         qs("#mCat").textContent = p.subLabel;
-        qs("#mName").textContent = p.name;
+
+        renderCarousel(p);
 
         // Update WhatsApp link with product name
         qs("#modalWaLink").href =
@@ -1029,6 +1200,117 @@
         qs("#modalOverlay").classList.add("open");
         document.body.style.overflow = "hidden";
       }
+
+      /* ── DIMENSIONS & PRIX SELON LE TISSU ─────── */
+      function renderSizePricing(p) {
+        const wrap = qs("#mSizes");
+        const table = qs("#mSizesTable");
+        if (!p.sizePricing || !p.sizePricing.length) {
+          wrap.hidden = true;
+          table.innerHTML = "";
+          return;
+        }
+        table.innerHTML = p.sizePricing
+          .map(
+            (row) => `
+      <div class="modal-size-row">
+        <span class="dim">${row.size}</span>
+        <span class="price">${row.price}</span>
+      </div>`,
+          )
+          .join("");
+        wrap.hidden = false;
+      }
+
+      /* ── CAROUSEL (product + sub-articles) ───── */
+      function renderCarousel(p) {
+        // First slide is the product itself, then each sub-article —
+        // each slide carries its own description/sizePricing when it has one
+        mcSlides = [
+          {
+            name: p.name,
+            img: p.img,
+            description: p.description,
+            sizePricing: p.sizePricing,
+          },
+          ...(p.subArticles || []).map((s) => ({
+            name: s.name,
+            img: s.img,
+            description: s.description,
+            sizePricing: s.sizePricing,
+          })),
+        ];
+        mcIndex = 0;
+
+        const track = qs("#mcTrack");
+        const dots = qs("#mcDots");
+        track.innerHTML = "";
+        dots.innerHTML = "";
+
+        mcSlides.forEach((s, i) => {
+          const slide = document.createElement("div");
+          slide.className = "mc-slide";
+          slide.innerHTML = `<img src="${s.img}" alt="${s.name}" loading="lazy" />`;
+          track.appendChild(slide);
+
+          const dot = document.createElement("button");
+          dot.className = "mc-dot" + (i === 0 ? " active" : "");
+          dot.setAttribute("aria-label", s.name);
+          dot.addEventListener("click", () => mcGoTo(i));
+          dots.appendChild(dot);
+        });
+
+        const hasMultiple = mcSlides.length > 1;
+        qs("#mcPrev").style.display = hasMultiple ? "flex" : "none";
+        qs("#mcNext").style.display = hasMultiple ? "flex" : "none";
+        qs("#mcDots").style.display = hasMultiple ? "flex" : "none";
+
+        // Reset scroll position before repainting the caption/dots
+        requestAnimationFrame(() => {
+          track.scrollTo({ left: 0 });
+          mcUpdateUI();
+        });
+      }
+
+      function mcGoTo(i) {
+        const track = qs("#mcTrack");
+        i = Math.max(0, Math.min(i, mcSlides.length - 1));
+        track.scrollTo({ left: track.clientWidth * i, behavior: "smooth" });
+      }
+
+      function mcUpdateUI() {
+        const slide = mcSlides[mcIndex];
+        qs("#mName").textContent = slide ? slide.name : "";
+        renderDesc(slide || {});
+        renderSizePricing(slide || {});
+        qsa(".mc-dot").forEach((d, i) => d.classList.toggle("active", i === mcIndex));
+      }
+
+      /* ── DESCRIPTION ───────────────────────────── */
+      function renderDesc(item) {
+        const el = qs("#mDesc");
+        if (!item.description) {
+          el.hidden = true;
+          el.textContent = "";
+          return;
+        }
+        el.textContent = item.description;
+        el.hidden = false;
+      }
+
+      qs("#mcPrev").addEventListener("click", () => mcGoTo(mcIndex - 1));
+      qs("#mcNext").addEventListener("click", () => mcGoTo(mcIndex + 1));
+
+      // Sync title/dots while the user scrolls/swipes the carousel
+      qs("#mcTrack").addEventListener("scroll", () => {
+        const track = qs("#mcTrack");
+        if (!track.clientWidth) return;
+        const idx = Math.round(track.scrollLeft / track.clientWidth);
+        if (idx !== mcIndex) {
+          mcIndex = idx;
+          mcUpdateUI();
+        }
+      });
 
       function closeModal() {
         qs("#modalOverlay").classList.remove("open");
@@ -1041,9 +1323,12 @@
       });
       // Close button
       qs("#modalCloseBtn").addEventListener("click", closeModal);
-      // Escape key
+      // Escape key / carousel arrow keys
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
+        if (!qs("#modalOverlay").classList.contains("open")) return;
+        if (e.key === "ArrowLeft") mcGoTo(mcIndex - 1);
+        if (e.key === "ArrowRight") mcGoTo(mcIndex + 1);
       });
 
       /* ── SCROLL REVEAL ────────────────────────── */
